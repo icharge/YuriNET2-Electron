@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html data-ng-app="yuriNET">
+<head>
+    <meta charset="UTF-8">
+    <title>YuriNET 2 Authentication</title>
+
+    <!-- CSSs -->
+    <link rel="stylesheet" href="public/css/semantic.min.css"/>
+    <!-- Semantic UI -->
+    <link rel="stylesheet" href="public/css/yn-style.css"/>
+
+    <!-- JavaScripts -->
+    <script src="public/js/angular.min.js"></script>
+    <script src="public/js/angular-route.min.js"></script>
+
+    <!-- Using Jquery on Electron -->
+    <script>window.$ = window.jQuery = require('./public/js/jquery.min.js');</script>
+    <script src="public/js/semantic.min.js"></script>
+
+    <script src="public/js/app.js"></script>
+
+</head>
+<body>
+<div data-ng-view=""></div>
+<script>
+    function createNewWindow() {
+        var popup = new BrowserWindow({width: 800, height: 600});
+        popup.loadURL('http://www.google.com');
+        popup.on('closed', function () {
+            popup = null;
+        });
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<style type="text/css">
+    body .login > .grid {
+        height: 100%;
+    }
+
+    .login .column {
+        max-width: 450px;
+    }
+</style>
+<div class="login ui middle aligned center aligned grid">
+    <div class="column">
+        <h2 class="ui violet image header">
+            <div class="content">
+                <img src="public/images/logo_sm.png" class="image" />
+            </div>
+        </h2>
+        <form id="form1" class="ui large form" data-ng-submit="submitLogin()">
+            <div class="ui stacked segment">
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="user icon"></i>
+                        <input type="text" name="username" placeholder="Username" data-ng-model="formData.username" />
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="lock icon"></i>
+                        <input type="password" name="password" placeholder="Password" data-ng-model="formData.password" />
+                    </div>
+                </div>
+                <div class="ui two buttons">
+                    <button type="button" class="ui fluid large button" onclick="exitApplication()">Exit</button>
+                    <button type="submit" class="ui fluid large violet submit button">Login</button>
+                </div>
+
+            </div>
+
+            <div class="ui error message"></div>
+
+        </form>
+
+        <div class="ui message">
+            New to us? <a href="#">Sign Up</a>
+        </div>
+        <div class="ui message">
+            Node: <script>document.write(process.versions.node)</script><br />
+            CEF: <script>document.write(process.versions.chrome)</script><br />
+            Electron: <script>document.write(process.versions.electron)</script>
+        </div>
+    </div>
+</div>

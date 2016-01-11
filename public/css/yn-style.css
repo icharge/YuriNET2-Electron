@@ -1,0 +1,57 @@
+/**
+ * YuriNET Stylesheet file
+ * By Thai RA2 Lovers (Norrapat Nimmanee)
+ */
+
+body {
+    background-color: #292B3A;
+    background-image: url('../images/bg-apo.jpg');
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /*background: transparent;*/
+}
+
+a {
+    color: #4B116D;
+}
+
+a:hover {
+    color: #C999E4;
+}
+
+.violet {
+    color: #712C99;
+}
+
+.ui.form input:not([type]), .ui.form input[type=text],
+.ui.form input[type=email], .ui.form input[type=search],
+.ui.form input[type=password], .ui.form input[type=date],
+.ui.form input[type=datetime-local], .ui.form input[type=tel],
+.ui.form input[type=time], .ui.form input[type=url],
+.ui.form input[type=number] {
+    background: #E8E8E8;
+}
+
+.ui.violet.button, .ui.violet.buttons .button {
+    background-color: #712C99;
+}
+
+.ui.violet.button:hover, .ui.violet.buttons .button:hover {
+    background-color: #8139AB;
+}
+
+.ui.violet.button:focus, .ui.violet.buttons .button:focus {
+    background-color: #8139AB;
+    text-decoration: underline;
+}
+
+.ui.segment {
+    background: #576177;
+}
+
+.ui.message {
+    color: rgba(255, 255, 255, 0.87);
+    background: #576177;
+}

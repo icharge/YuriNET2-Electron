@@ -20,6 +20,12 @@ function exitApplication() {
     remote.app.quit();
 }
 
+function resizeWindow(w,h) {
+    var win = remote.getCurrentWindow();
+    // now i have everything from BrowserWindow api...
+    win.setSize(w, h);
+}
+
 /**
  * AngularJS scripts
  */
@@ -98,12 +104,14 @@ app
                 // Check result
                 if (data.result.toLowerCase().indexOf('fail') < 0) {
                     console.log('Logged In : ' + data.playername);
+                    resizeWindow(1000,800);
                     Dialog.showMessageBox(remote.getCurrentWindow(), {
                         type: 'info',
                         title: 'YuriNET 2',
                         buttons: ['OK'],
                         message: 'You are logging in as ' + data.playername
                     });
+
                 } else {
                     console.warn('Incorrect credential');
                     Dialog.showMessageBox(remote.getCurrentWindow(), {

@@ -23,10 +23,10 @@ function createWindow() {
 
     // Create the browser window.
     mainWindow = new BrowserWindow({
-        width: 777, height: 588,
+        width: 777, height: 588
         //frame: false,
         //transparent: true,
-        resizable: false
+        //resizable: false
     });
 
     // and load the index.html of the app.

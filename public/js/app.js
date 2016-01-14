@@ -25,6 +25,9 @@ function exitApplication() {
  */
 var app = angular.module('yuriNET', ['ngRoute']);
 
+/**
+ * Angular Configuration
+ */
 app
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
@@ -40,20 +43,81 @@ app
                 redirectTo: '/'
             });
     }])
+
+/**
+ * Constant Configuration
+ */
+    .constant('CONST_URI', (function () {
+        //var host = 'play.thaira2.com';
+        var host = 'playthaira2.localhost';
+        var useSecure = false;
+        var protocol = function (isSecure) {
+            return isSecure ? 'https://' : 'http://';
+        };
+
+        var hostname = function (isSecure) {
+            return protocol(isSecure) + host + '/';
+        };
+        return {
+            LoginUri: hostname(useSecure) + 'auth/loginyn/'
+        }
+    })())
+
+/**
+ * Factories
+ */
+    .factory('Auth', function ($http, CONST_URI) {
+        return {
+            login: function (data) {
+                return $http({
+                    method: 'POST',
+                    url: CONST_URI.LoginUri,
+                    data: $.param(data),
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                });
+            }
+        }
+    })
+
+/**
+ * Controllers
+ */
     .controller('MainController', function ($scope, $location) {
         $location.path('/login');
     })
-    .controller('LoginController', function ($scope) {
+    .controller('LoginController', function ($scope, Auth) {
         $scope.formData = {};
 
         $scope.submitLogin = function () {
-            Dialog.showMessageBox(remote.getCurrentWindow(), {
-                type: 'info',
-                title: 'YuriNET 2',
-                buttons: ['OK'],
-                message: 'You are logging in as ' + $scope.formData.username
+            console.log('Logging in as ' + $scope.formData.username + '...');
+            Auth.login({
+                u: $scope.formData.username,
+                p: $scope.formData.password,
+                hds: ''
+            }).success(function (data) {
+                // Check result
+                if (data.result.toLowerCase().indexOf('fail') < 0) {
+                    console.log('Logged In : ' + data.playername);
+                    Dialog.showMessageBox(remote.getCurrentWindow(), {
+                        type: 'info',
+                        title: 'YuriNET 2',
+                        buttons: ['OK'],
+                        message: 'You are logging in as ' + data.playername
+                    });
+                } else {
+                    console.warn('Incorrect credential');
+                    Dialog.showMessageBox(remote.getCurrentWindow(), {
+                        type: 'warning',
+                        title: 'YuriNET 2',
+                        buttons: ['OK'],
+                        message: 'Username or Password is incorrect.'
+                    });
+                }
+
+
             });
-        }
+
+        };
 
         document.getElementsByName('username')[0].focus();
     });

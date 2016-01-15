@@ -96,6 +96,10 @@ app
 
         $scope.submitLogin = function () {
             console.log('Logging in as ' + $scope.formData.username + '...');
+
+            $scope.loading = true;
+
+            // Logging in
             Auth.login({
                 u: $scope.formData.username,
                 p: $scope.formData.password,
@@ -121,7 +125,7 @@ app
                         message: 'Username or Password is incorrect.'
                     });
                 }
-
+                $scope.loading = false;
 
             });
 

@@ -31,7 +31,10 @@
                 </div>
                 <div class="ui two buttons">
                     <button type="button" class="ui fluid large button" onclick="exitApplication()">Exit</button>
-                    <button type="submit" class="ui fluid large violet submit button">Login</button>
+                    <button type="submit" class="ui fluid large violet submit button"
+                            data-ng-class="loading ? 'loading' : ''"
+                            data-ng-disabled="loading"
+                            >Login</button>
                 </div>
 
             </div>

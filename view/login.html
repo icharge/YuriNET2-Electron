@@ -15,18 +15,22 @@
                 <img src="public/images/logo_sm.png" class="image" />
             </div>
         </h2>
-        <form id="form1" class="ui large form" data-ng-submit="submitLogin()">
+        <form name="loginForm" class="ui large form" data-ng-submit="submitLogin()">
             <div class="ui stacked segment">
-                <div class="field">
+                <div class="field"
+                     data-ng-class="{'error' : loginForm.username.$invalid && !loginForm.username.$pristine}">
                     <div class="ui left icon input">
                         <i class="user icon"></i>
-                        <input type="text" name="username" placeholder="Username" data-ng-model="formData.username" />
+                        <input type="text" name="username" placeholder="Username"
+                               data-ng-model="formData.username" required data-ng-minlength="6"/>
                     </div>
                 </div>
-                <div class="field">
+                <div class="field"
+                     data-ng-class="{'error' : loginForm.password.$invalid && !loginForm.password.$pristine}">
                     <div class="ui left icon input">
                         <i class="lock icon"></i>
-                        <input type="password" name="password" placeholder="Password" data-ng-model="formData.password" />
+                        <input type="password" name="password" placeholder="Password"
+                               data-ng-model="formData.password" required />
                     </div>
                 </div>
                 <div class="ui two buttons">

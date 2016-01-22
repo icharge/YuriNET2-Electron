@@ -34,6 +34,24 @@ a:hover {
     background: #E8E8E8;
 }
 
+.ui.form .field.error input:not([type]), .ui.form .field.error input[type=text],
+.ui.form .field.error input[type=email], .ui.form .field.error input[type=search],
+.ui.form .field.error input[type=password], .ui.form .field.error input[type=date],
+.ui.form .field.error input[type=datetime-local], .ui.form .field.error input[type=tel],
+.ui.form .field.error input[type=time], .ui.form .field.error input[type=url],
+.ui.form .field.error input[type=number], .ui.form .field.error select,
+.ui.form .field.error textarea, .ui.form .fields.error .field input:not([type]),
+.ui.form .fields.error .field input[type=text], .ui.form .fields.error .field input[type=email],
+.ui.form .fields.error .field input[type=search], .ui.form .fields.error .field input[type=password],
+.ui.form .fields.error .field input[type=date], .ui.form .fields.error .field input[type=datetime-local],
+.ui.form .fields.error .field input[type=tel], .ui.form .fields.error .field input[type=time],
+.ui.form .fields.error .field input[type=url], .ui.form .fields.error .field input[type=number],
+.ui.form .fields.error .field select, .ui.form .fields.error .field textarea {
+    background: #FFDFDD;
+    border-color: #FB8B77;
+    color: #9f3a38;
+}
+
 .ui.violet.button, .ui.violet.buttons .button {
     background-color: #712C99;
 }
@@ -55,3 +73,33 @@ a:hover {
     color: rgba(255, 255, 255, 0.87);
     background: #576177;
 }
+
+/* Angular Transition */
+.pop {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+.pop.ng-enter,
+.pop.ng-leave {
+    -webkit-transition: all 1s ease;
+    transition: all 1s ease;
+}
+.pop.ng-enter {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+.pop.ng-enter-active {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+.pop.ng-leave {
+    opacity: 1;
+}
+.pop.ng-leave-active {
+    opacity: 0;
+}
+
+/* End Angular Transition */

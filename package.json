@@ -14,5 +14,10 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/atom/electron-quick-start.git"
+  },
+  "dependencies": {
+    "angular": "^1.4.9",
+    "angular-animate": "^1.4.9",
+    "angular-route": "^1.4.9"
   }
 }

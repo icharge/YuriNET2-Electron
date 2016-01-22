@@ -9,7 +9,6 @@
 
 /**
  * Electron scripts
- * for using
  */
 const remote = require('electron').remote;
 const BrowserWindow = remote.BrowserWindow;
@@ -31,7 +30,7 @@ function resizeWindow(w, h) {
  */
 
 // Initial
-var app = angular.module('yuriNET', ['ngRoute']);
+var app = angular.module('yuriNET', ['ngRoute', 'ngAnimate']);
 
 /**
  * Angular Configuration
@@ -125,15 +124,25 @@ app
     })
     .controller('LoginController', function ($scope, $location, Auth) {
 
+        // jQuery Semantic-UI Form validation
+        /*$('#loginForm').form({
+         fields: {
+         username: 'empty',
+         password: ['minLength[6]', 'empty']
+         }
+         });*/
+
+        // Clear Auth
+        Auth.user = null;
+
         $scope.formData = {};
-        var txtUser = document.getElementsByName('username')[0],
-            txtPass = document.getElementsByName('password')[0];
+        var txtUser = document.forms['loginForm'].username,
+            txtPass = document.forms['loginForm'].password;
 
         $scope.submitLogin = function () {
+
             console.log('Logging in as ' + $scope.formData.username + '...');
-
             $scope.loading = true;
-
             // Logging in
             Auth.login({
                 u: $scope.formData.username,
@@ -144,13 +153,14 @@ app
                 var data = Auth.user = response.data;
                 if (data.result.toLowerCase().indexOf('fail') < 0) {
                     console.log('Logged In : ' + data.playername);
+                    /*
                     Dialog.showMessageBox(remote.getCurrentWindow(), {
                         type: 'info',
                         title: 'YuriNET 2',
                         buttons: ['OK'],
                         message: 'You are logging in as ' + Auth.user.playername
                     });
-
+                    */
                     $location.path('/lobby');
                 } else {
                     console.warn('Incorrect credential');
@@ -179,6 +189,10 @@ app
         txtUser.focus();
     })
     .controller('LobbyController', function ($scope, $location, Auth) {
+        if (null == Auth.user) {
+            $location.path('/login');
+        }
+
         $scope.foobar = 'Hello Lobby';
         $scope.Auth = Auth;
     })

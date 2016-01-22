@@ -18,19 +18,25 @@
         <form name="loginForm" class="ui large form" data-ng-submit="submitLogin()">
             <div class="ui stacked segment">
                 <div class="field"
-                     data-ng-class="{'error' : loginForm.username.$invalid && !loginForm.username.$pristine}">
+                     data-ng-class="{'error' : loginForm.username.$invalid && submitted}">
                     <div class="ui left icon input">
                         <i class="user icon"></i>
                         <input type="text" name="username" placeholder="Username"
-                               data-ng-model="formData.username" required data-ng-minlength="6"/>
+                               data-ng-model="formData.username" required/>
                     </div>
                 </div>
                 <div class="field"
-                     data-ng-class="{'error' : loginForm.password.$invalid && !loginForm.password.$pristine}">
+                     data-ng-class="{'error' : loginForm.password.$invalid && submitted}">
                     <div class="ui left icon input">
                         <i class="lock icon"></i>
                         <input type="password" name="password" placeholder="Password"
                                data-ng-model="formData.password" required />
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui checkbox">
+                        <input type="checkbox" id="remember" data-ng-model="formData.remember" />
+                        <label for="remember">Remember Me</label>
                     </div>
                 </div>
                 <div class="ui two buttons">

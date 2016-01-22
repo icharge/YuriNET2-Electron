@@ -140,6 +140,7 @@ app
             txtPass = document.forms['loginForm'].password;
 
         $scope.submitLogin = function () {
+            $scope.submitted = true;
 
             console.log('Logging in as ' + $scope.formData.username + '...');
             $scope.loading = true;

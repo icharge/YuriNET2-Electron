@@ -34,6 +34,10 @@ a:hover {
     background: #E8E8E8;
 }
 
+.ui.checkbox .box, .ui.checkbox label {
+    cursor: pointer;
+}
+
 .ui.form .field.error input:not([type]), .ui.form .field.error input[type=text],
 .ui.form .field.error input[type=email], .ui.form .field.error input[type=search],
 .ui.form .field.error input[type=password], .ui.form .field.error input[type=date],

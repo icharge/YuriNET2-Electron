@@ -210,12 +210,23 @@ app
         // Clear Auth
         Auth.user = null;
 
-        $scope.formData = {};
+        // Get Login form data
+        try {
+            $scope.formData = angular.fromJson(localStorage.getItem('loginForm')) || {};
+        } catch (e) {
+            $scope.formData = {};
+        }
+
         var txtUser = document.forms['loginForm'].username,
             txtPass = document.forms['loginForm'].password;
 
         $scope.submitLogin = function () {
             $scope.submitted = true;
+
+            // Store form data to LS
+            if ($scope.formData.remember === true) {
+                localStorage.setItem('loginForm', angular.toJson($scope.formData));
+            }
 
             console.log('Logging in as ' + $scope.formData.username + '...');
             $scope.loading = true;

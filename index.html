@@ -1,27 +1,58 @@
 <!DOCTYPE html>
-<html data-ng-app="yuriNET">
+<html lang="{{ lang }}" data-ng-app="yuriNET">
 <head>
     <meta charset="UTF-8">
     <title>YuriNET 2 (Alpha)</title>
 
     <!-- CSSs -->
-    <link rel="stylesheet" href="public/css/semantic.min.css"/>
     <!-- Semantic UI -->
+    <link rel="stylesheet" href="public/css/semantic.min.css"/>
+    <link rel="stylesheet" href="public/css/dropdown.min.css"/>
     <link rel="stylesheet" href="public/css/yn-style.css"/>
 
     <!-- JavaScripts -->
     <script src="public/js/angular.min.js"></script>
+    <script src="public/js/angular-sanitize.js"></script>
     <script src="public/js/angular-animate.min.js"></script>
     <script src="public/js/angular-route.min.js"></script>
+    <script src="public/js/angular-translate.min.js"></script>
+    <script src="public/js/angular-translate-handler-log.min.js"></script>
+    <script src="public/js/angular-translate-loader-static-files.min.js"></script>
 
     <!-- Using Jquery on Electron -->
     <script>window.$ = window.jQuery = require('./public/js/jquery.min.js');</script>
     <script src="public/js/semantic.min.js"></script>
+    <script src="public/js/dropdown.min.js"></script>
 
+    <!-- Application scripts -->
     <script src="public/js/app.js"></script>
 
 </head>
 <body>
+<div class="btn-settings" data-ng-controller="SettingController">
+    <div class="ui icon top left pointing dropdown button">
+        <i class="settings icon"></i>
+        <div class="menu">
+            <div class="header">{{ 'SETTINGS' | translate }}</div>
+            <div class="ui divider"></div>
+            <div class="item">
+                <i class="dropdown icon"></i>
+                <span class="text">{{ 'LANGUAGE' | translate }}</span>
+                <div class="menu">
+                    <div class="item" data-ng-click="alert('en')">
+                        <i class="translate icon"></i>
+                        {{ 'ENGLISH' | translate }}
+                    </div>
+                    <div class="item" data-ng-click="Translator.changeLanguage('th')">
+                        <i class="translate icon"></i>
+                        {{ 'THAI' | translate }}
+                    </div>
+                </div>
+            </div>
+            <div class="item">Help</div>
+        </div>
+    </div>
+</div>
 <div data-ng-view="" data-ng-class="'pop'"></div>
 <script>
     function createNewWindow() {

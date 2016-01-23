@@ -21,7 +21,7 @@
                      data-ng-class="{'error' : loginForm.username.$invalid && submitted}">
                     <div class="ui left icon input">
                         <i class="user icon"></i>
-                        <input type="text" name="username" placeholder="Username"
+                        <input type="text" name="username" placeholder="{{ 'USERNAME' | translate }}"
                                data-ng-model="formData.username" required/>
                     </div>
                 </div>
@@ -29,22 +29,22 @@
                      data-ng-class="{'error' : loginForm.password.$invalid && submitted}">
                     <div class="ui left icon input">
                         <i class="lock icon"></i>
-                        <input type="password" name="password" placeholder="Password"
+                        <input type="password" name="password" placeholder="{{ 'PASSWORD' | translate }}"
                                data-ng-model="formData.password" required />
                     </div>
                 </div>
                 <div class="field">
                     <div class="ui checkbox">
                         <input type="checkbox" id="remember" data-ng-model="formData.remember" />
-                        <label for="remember">Remember Me</label>
+                        <label for="remember">{{ 'REMEMBER_ME' | translate }}</label>
                     </div>
                 </div>
                 <div class="ui two buttons">
-                    <button type="button" class="ui fluid large button" onclick="exitApplication()">Exit</button>
+                    <button type="button" class="ui fluid large button" onclick="exitApplication()">{{ 'EXIT' | translate }}</button>
                     <button type="submit" class="ui fluid large violet submit button"
                             data-ng-class="loading ? 'loading' : ''"
                             data-ng-disabled="loading"
-                            >Login</button>
+                            >{{ 'LOGIN' | translate}}</button>
                 </div>
 
             </div>
@@ -54,7 +54,7 @@
         </form>
 
         <div class="ui message">
-            New to us? <a href="#">Sign Up</a>
+            {{ 'INVITE_TO_REGISTER_MSG' | translate }} <a href="#">{{ 'SIGN_UP' | translate }}</a>
         </div>
         <!--<div class="ui message">
             Node: <script>document.write(process.versions.node)</script><br />

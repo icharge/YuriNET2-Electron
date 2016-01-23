@@ -25,17 +25,37 @@ function resizeWindow(w, h) {
     win.setSize(w, h);
 }
 
+
+/**
+ * Theme Scripts
+ */
+// On document ready
+$(function () {
+    $('.ui.dropdown').dropdown();
+
+});
+
+
 /**
  * AngularJS scripts
  */
 
-// Initial
-var app = angular.module('yuriNET', ['ngRoute', 'ngAnimate']);
+// Initial Application
+var app = angular.module('yuriNET', [
+    'ngSanitize', // Angular Sanitize
+    'ngRoute', // Angular Routing
+    'ngAnimate', // Angular Animate
+    'pascalprecht.translate' // Angular Translator
+]);
+
+// Using app
+app
 
 /**
  * Angular Configuration
  */
-app
+
+// Routing provider config
     .config(function ($routeProvider, $httpProvider) {
         $routeProvider
             .when('/', {
@@ -56,6 +76,21 @@ app
 
     })
 
+    // Translator config
+    .config(function ($translateProvider) {
+        $translateProvider
+            .useStaticFilesLoader({
+                prefix: 'public/lang/',
+                suffix: '.json'
+            })
+            .preferredLanguage('en')
+            .useMissingTranslationHandlerLog();
+
+        // For security, Use sanitize
+        // Detail : http://angular-translate.github.io/docs/#/guide/19_security
+        $translateProvider.useSanitizeValueStrategy('escape');
+    })
+
     /**
      * Constants
      */
@@ -70,6 +105,27 @@ app
             LOGOUT_URI: hostname + 'auth/loghout/'
         }
     })())
+
+    /**
+     * Services
+     */
+    .service('Translator', function ($translate, $rootScope) {
+        // Translator script
+        var currentLanguage = $translate.use();
+        var changeLanguage = function (lang) {
+            alert(lang);
+            $translate.use(lang);
+        };
+
+        $rootScope.$on('$translateChangeSuccess', function (e, data) {
+            currentLanguage = data.language;
+        });
+
+        return {
+            getCurrent: currentLanguage,
+            changeLanguage: changeLanguage
+        };
+    })
 
     /**
      * Factories
@@ -114,6 +170,13 @@ app
     })
 
     /**
+     * Root scope
+     */
+    .run(['$rootScope', function ($rootScope, Translator) {
+
+    }])
+
+    /**
      * Controllers
      */
     .controller('MainController', function ($scope, $location, Auth) {
@@ -122,8 +185,12 @@ app
         }
 
     })
-    .controller('LoginController', function ($scope, $location, Auth) {
+    .controller('SettingController', function ($scope, Translator) {
 
+    })
+
+    .controller('LoginController', function ($scope, $location, Auth, Translator) {
+        //Translator.changeLanguage('th');
         // jQuery Semantic-UI Form validation
         /*$('#loginForm').form({
          fields: {
@@ -155,13 +222,13 @@ app
                 if (data.result.toLowerCase().indexOf('fail') < 0) {
                     console.log('Logged In : ' + data.playername);
                     /*
-                    Dialog.showMessageBox(remote.getCurrentWindow(), {
-                        type: 'info',
-                        title: 'YuriNET 2',
-                        buttons: ['OK'],
-                        message: 'You are logging in as ' + Auth.user.playername
-                    });
-                    */
+                     Dialog.showMessageBox(remote.getCurrentWindow(), {
+                     type: 'info',
+                     title: 'YuriNET 2',
+                     buttons: ['OK'],
+                     message: 'You are logging in as ' + Auth.user.playername
+                     });
+                     */
                     $location.path('/lobby');
                 } else {
                     console.warn('Incorrect credential');

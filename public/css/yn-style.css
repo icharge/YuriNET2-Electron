@@ -107,3 +107,10 @@ a:hover {
 }
 
 /* End Angular Transition */
+
+/* Settings button */
+.btn-settings {
+    position: fixed;
+    z-index: 99999;
+    opacity: 0.8;
+}

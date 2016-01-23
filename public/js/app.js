@@ -31,7 +31,7 @@ function resizeWindow(w, h) {
  */
 // On document ready
 $(function () {
-    $('.ui.dropdown').dropdown();
+
 
 });
 
@@ -107,29 +107,9 @@ app
     })())
 
     /**
-     * Services
-     */
-    .service('Translator', function ($translate, $rootScope) {
-        // Translator script
-        var currentLanguage = $translate.use();
-        var changeLanguage = function (lang) {
-            alert(lang);
-            $translate.use(lang);
-        };
-
-        $rootScope.$on('$translateChangeSuccess', function (e, data) {
-            currentLanguage = data.language;
-        });
-
-        return {
-            getCurrent: currentLanguage,
-            changeLanguage: changeLanguage
-        };
-    })
-
-    /**
      * Factories
      */
+    // Authentication
     .factory('Auth', function ($http, CONST_URI) {
         // User object structure
         var userObj = {
@@ -169,6 +149,27 @@ app
         }
     })
 
+    // Translator
+    .factory('Translator', function ($translate, $rootScope) {
+        // Translator script
+        var currentLanguage = $translate.use();
+        var changeLanguage = function (lang) {
+            $translate.use(lang);
+        };
+
+        $rootScope.$on('$translateChangeSuccess', function (e, data) {
+            currentLanguage = data.language;
+        });
+
+        return {
+            getCurrent: currentLanguage,
+            changeLanguage: changeLanguage,
+            getText: function (key) {
+                return $translate.instant(key);
+            }
+        };
+    })
+
     /**
      * Root scope
      */
@@ -185,8 +186,15 @@ app
         }
 
     })
-    .controller('SettingController', function ($scope, Translator) {
 
+    .controller('SettingController', function ($scope, Translator) {
+        $('.ui.dropdown').dropdown({
+            action: 'hide'
+        });
+
+        $scope.changeLanguage = function (lang) {
+            Translator.changeLanguage(lang);
+        };
     })
 
     .controller('LoginController', function ($scope, $location, Auth, Translator) {
@@ -234,9 +242,9 @@ app
                     console.warn('Incorrect credential');
                     Dialog.showMessageBox(remote.getCurrentWindow(), {
                         type: 'warning',
-                        title: 'YuriNET 2',
-                        buttons: ['OK'],
-                        message: 'Username or Password is incorrect.'
+                        title: Translator.getText('APP_NAME'),
+                        buttons: [Translator.getText('OK')],
+                        message: Translator.getText('LOGIN_INCORRECT')
                     });
                 }
                 $scope.loading = false;
@@ -246,9 +254,9 @@ app
             }, function (response) {
                 Dialog.showMessageBox(remote.getCurrentWindow(), {
                     type: 'error',
-                    title: 'YuriNET 2',
-                    buttons: ['OK'],
-                    message: 'Error can\'t talk to the server.'
+                    title: Translator.getText('APP_NAME'),
+                    buttons: [Translator.getText('OK')],
+                    message: Translator.getText('LOGIN_FAILED')
                 });
                 $scope.loading = false;
             });

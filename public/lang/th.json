@@ -1,15 +1,19 @@
 {
+  "APP_NAME": "ยูริเน็ต 2",
   "LANGUAGE": "ภาษา",
   "TRANSLATOR": "Norrapat Nimmanee",
   "THIS_LANGUAGE": "ไทย",
   "ENGLISH": "อังกฤษ",
   "THAI": "ไทย",
   "LOGIN": "เข้าสู่ระบบ",
+  "OK": "ตกลง",
   "USERNAME": "ชื่อผู้ใช้",
   "PASSWORD": "รหัสผ่าน",
   "REMEMBER_ME": "จดจำ",
   "EXIT": "ออก",
   "INVITE_TO_REGISTER_MSG": "มาใหม่หรอ? ",
   "SIGN_UP": "ลงทะเบียนเลย",
-  "SETTINGS": "ตั้งค่า"
+  "SETTINGS": "ตั้งค่า",
+  "LOGIN_INCORRECT": "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง",
+  "LOGIN_FAILED": "ไม่สามารถเชื่อมต่อ Server ได้ !"
 }

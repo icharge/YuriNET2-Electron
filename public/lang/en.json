@@ -1,15 +1,19 @@
 {
+  "APP_NAME": "YuriNET 2",
   "LANGUAGE": "Language",
   "TRANSLATOR": "Norrapat Nimmanee",
   "THIS_LANGUAGE": "English",
   "ENGLISH": "English",
   "THAI": "Thai",
   "LOGIN": "Login",
+  "OK": "Okay",
   "USERNAME": "Username",
   "PASSWORD": "Password",
   "REMEMBER_ME": "Remember me",
   "EXIT": "Exit",
   "INVITE_TO_REGISTER_MSG": "New here? ",
   "SIGN_UP": "Sign up",
-  "SETTINGS": "Settings"
+  "SETTINGS": "Settings",
+  "LOGIN_INCORRECT": "Username or Password is incorrect.",
+  "LOGIN_FAILED": "Can't communicate to server !"
 }

@@ -112,5 +112,12 @@ a:hover {
 .btn-settings {
     position: fixed;
     z-index: 99999;
-    opacity: 0.8;
+}
+
+.btn-settings .ui.button {
+    opacity: 0.5;
+}
+
+.btn-settings .ui.button.active {
+    opacity: 1;
 }

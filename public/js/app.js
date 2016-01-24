@@ -172,6 +172,7 @@ app
                 return $translate.instant(key);
             }
         };
+
     })
 
     /**

@@ -69,6 +69,30 @@ a:hover {
     text-decoration: underline;
 }
 
+
+.ui.menu.violet {
+    background-color: #482A8A;
+    color: #fff;
+}
+
+.ui.violet.menu .item {
+    border-color: #6435c9!important;
+    color: #B9A8DC!important;
+}
+
+.ui.menu .violet.active.item, .ui.violet.menu .active.item {
+    color: #EFE7FF!important;
+    font-weight: bold !important;
+}
+
+.ui.menu.violet .dropdown.item .menu {
+    background: #694CA9;
+}
+
+.ui.menu.violet .ui.dropdown .menu>.item {
+    color: #fff !important;
+}
+
 .ui.segment {
     background: #576177;
 }

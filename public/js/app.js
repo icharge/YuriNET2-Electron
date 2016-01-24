@@ -15,6 +15,9 @@ const BrowserWindow = remote.BrowserWindow;
 const Dialog = remote.dialog;
 const Session = remote.session;
 
+const child = require('child_process');
+const spawn = child.spawn;
+
 function exitApplication() {
     remote.app.quit();
 }
@@ -83,7 +86,7 @@ app
                 prefix: 'public/lang/',
                 suffix: '.json'
             })
-            .preferredLanguage('en')
+            .preferredLanguage(localStorage.getItem('language') ||  'en')
             .useMissingTranslationHandlerLog();
 
         // For security, Use sanitize
@@ -159,6 +162,7 @@ app
 
         $rootScope.$on('$translateChangeSuccess', function (e, data) {
             currentLanguage = data.language;
+            localStorage.setItem('language', currentLanguage);
         });
 
         return {
@@ -194,6 +198,20 @@ app
 
         $scope.changeLanguage = function (lang) {
             Translator.changeLanguage(lang);
+        };
+
+        $scope.launch = function() {
+            try {
+                var yuriExec = spawn('C:\\Westwood\\Ra2\\RA2MD.exe', {
+                    env : {
+                        'CNCNET_URL' : 'ra2:v4serv=miyuki.i4th.in.th:4434'
+                    }
+                });
+            } catch (e) {
+                console.log('Exec Error, Maybe need Administrator privileges.', e);
+            }
+
+
         };
     })
 
@@ -262,7 +280,7 @@ app
 
                 txtPass.focus();
                 txtPass.setSelectionRange(0, txtPass.value.length);
-            }, function (response) {
+            }, function () {
                 Dialog.showMessageBox(remote.getCurrentWindow(), {
                     type: 'error',
                     title: Translator.getText('APP_NAME'),
@@ -279,6 +297,11 @@ app
         if (null == Auth.user) {
             $location.path('/login');
         }
+
+        // jQuery Dropdown
+        $('.ui.menu .ui.dropdown').dropdown({
+            on: 'hover'
+        });
 
         $scope.foobar = 'Hello Lobby';
         $scope.Auth = Auth;

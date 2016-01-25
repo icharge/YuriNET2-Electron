@@ -71,12 +71,16 @@ a:hover {
 
 
 .ui.menu.violet {
-    background-color: #482A8A;
+    background-color: #3B236F;
     color: #fff;
+    border-radius: 0;
+}
+
+.ui.menu.violet .ui.container {
+    background: #482A8A;
 }
 
 .ui.violet.menu .item {
-    border-color: #6435c9!important;
     color: #B9A8DC!important;
 }
 
@@ -91,6 +95,15 @@ a:hover {
 
 .ui.menu.violet .ui.dropdown .menu>.item {
     color: #fff !important;
+}
+
+.ui.link.menu .item:hover, .ui.menu .dropdown.item:hover,
+.ui.menu .link.item:hover, .ui.menu a.item:hover {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.ui.main.text.container {
+    max-width: inherit !important;
 }
 
 .ui.segment {

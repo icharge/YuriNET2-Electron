@@ -1,29 +1,34 @@
 <div class="ui menu violet">
-    <div class="header item">Brand</div>
-    <a class="active item">Link</a>
-    <a class="item">Link</a>
-    <div class="ui dropdown item" tabindex="0">
-        Dropdown
-        <i class="dropdown icon"></i>
-        <div class="menu transition hidden" tabindex="-1">
-            <div class="item">Action</div>
-            <div class="item">Another Action</div>
-            <div class="item">Something else here</div>
-            <div class="divider"></div>
-            <div class="item">Separated Link</div>
-            <div class="divider"></div>
-            <div class="item">One more separated link</div>
-        </div>
-    </div>
-    <div class="right menu">
-        <div class="item">
-            <div class="ui transparent inverted icon input">
-                <i class="search icon"></i>
-                <input type="text" placeholder="Search">
+    <div class="ui container">
+        <div class="header item">YuriNET</div>
+        <a class="active item">Link</a>
+        <a class="item">Link</a>
+        <div class="ui dropdown item" tabindex="0">
+            Dropdown
+            <i class="dropdown icon"></i>
+            <div class="menu transition hidden" tabindex="-1">
+                <div class="item">Action</div>
+                <div class="item">Another Action</div>
+                <div class="item">Something else here</div>
+                <div class="divider"></div>
+                <div class="item">Separated Link</div>
+                <div class="divider"></div>
+                <div class="item">One more separated link</div>
             </div>
         </div>
-        <a class="item">Link</a>
+        <div class="right menu">
+            <div class="item">
+                <div class="ui transparent inverted icon input">
+                    <i class="search icon"></i>
+                    <input type="text" placeholder="Search">
+                </div>
+            </div>
+            <a class="item">Logout</a>
+        </div>
     </div>
 </div>
+<div class="ui main text container">
 
-<h2>{{ Auth.user.playername }}</h2>
+    <h2 class="ui header">{{ Auth.user.playername }}</h2>
+
+</div>

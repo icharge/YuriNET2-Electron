@@ -17,18 +17,18 @@
             </div>
         </div>
         <div class="right menu">
-            <div class="item">
+            <!--<div class="item">
                 <div class="ui transparent inverted icon input">
                     <i class="search icon"></i>
                     <input type="text" placeholder="Search">
                 </div>
-            </div>
-            <a class="item">Logout</a>
+            </div>-->
+            <a class="item" data-ng-click="logout()">{{ 'LOGOUT' | translate }}</a>
         </div>
     </div>
 </div>
 <div class="ui main text container">
 
-    <h2 class="ui header">{{ Auth.user.playername }}</h2>
+    <h2 class="ui header">{{ user.playername }}</h2>
 
 </div>

@@ -62,16 +62,16 @@ app
     .config(function ($routeProvider, $httpProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'view/main.html',
+                templateUrl: 'view/blank.html',
+                controller: 'LandingController'
+            })
+            .when('/main', {
+                templateUrl: 'view/main-menu.html',
                 controller: 'MainController'
             })
             .when('/login', {
                 templateUrl: 'view/login.html',
                 controller: 'LoginController'
-            })
-            .when('/lobby', {
-                templateUrl: 'view/lobby.html',
-                controller: 'LobbyController'
             })
             .otherwise({
                 redirectTo: '/'
@@ -86,7 +86,7 @@ app
                 prefix: 'public/lang/',
                 suffix: '.json'
             })
-            .preferredLanguage(localStorage.getItem('language') ||  'en')
+            .preferredLanguage(localStorage.getItem('language') || 'en')
             .useMissingTranslationHandlerLog();
 
         // For security, Use sanitize
@@ -168,8 +168,8 @@ app
         return {
             getCurrent: currentLanguage,
             changeLanguage: changeLanguage,
-            getText: function (key) {
-                return $translate.instant(key);
+            getText: function (key, replacement) {
+                return $translate.instant(key, replacement);
             }
         };
 
@@ -178,17 +178,62 @@ app
     /**
      * Root scope
      */
-    .run(['$rootScope', function ($rootScope, Translator) {
+    .run(['$rootScope', function ($rootScope) {
 
     }])
 
     /**
      * Controllers
      */
-    .controller('MainController', function ($scope, $location, Auth) {
+    .controller('LandingController', function ($scope, $location, Auth) {
         if (null == Auth.user) {
             $location.path('/login');
+        } else {
+            $location.path('/main');
         }
+    })
+
+    .controller('MainController', function ($scope, $location, Auth, Translator) {
+        // Check Authentication
+        if (null == Auth.user) {
+            // Goto login page
+            $location.path('/login');
+        } else {
+            // Set Auth info
+            $scope.user = Auth.user;
+        }
+
+        // jQuery Dropdown
+        $('.ui.menu .ui.dropdown').dropdown({
+            //on: 'hover'
+            action: 'hide'
+        });
+
+        /**
+         * Functions that buttons use.
+         */
+
+            // Logout
+        $scope.logout = function () {
+            Dialog.showMessageBox(remote.getCurrentWindow(), {
+                type: 'question', // This shown as Info, need Native image
+                buttons: [Translator.getText('YES'), Translator.getText('NO')],
+                defaultId: 2, // Why not worked?
+                title: Translator.getText('APP_NAME'),
+
+                // This message body passed player-name as variable
+                message: Translator.getText('ASK_LOGOUT',
+                    {playername: $scope.user.playername}),
+                cancelId: 2 // No button for cancel action
+            }, function (answer) {
+                // Answer is a button index
+                if (answer == 0) {
+                    // Say yes
+                    Auth.logout(); // TODO: This will return promise.
+                    $location.path('/login');
+                }
+            });
+        };
 
     })
 
@@ -201,11 +246,11 @@ app
             Translator.changeLanguage(lang);
         };
 
-        $scope.launch = function() {
+        $scope.launch = function () {
             try {
                 var yuriExec = spawn('C:\\Westwood\\Ra2\\RA2MD.exe', {
-                    env : {
-                        'CNCNET_URL' : 'ra2:v4serv=miyuki.i4th.in.th:4434'
+                    env: {
+                        'CNCNET_URL': 'ra2:v4serv=miyuki.i4th.in.th:4434'
                     }
                 });
             } catch (e) {
@@ -267,7 +312,7 @@ app
                      message: 'You are logging in as ' + Auth.user.playername
                      });
                      */
-                    $location.path('/lobby');
+                    $location.path('/main');
                 } else {
                     console.warn('Incorrect credential');
                     Dialog.showMessageBox(remote.getCurrentWindow(), {
@@ -294,17 +339,5 @@ app
 
         txtUser.focus();
     })
-    .controller('LobbyController', function ($scope, $location, Auth) {
-        if (null == Auth.user) {
-            $location.path('/login');
-        }
 
-        // jQuery Dropdown
-        $('.ui.menu .ui.dropdown').dropdown({
-            on: 'hover'
-        });
-
-        $scope.foobar = 'Hello Lobby';
-        $scope.Auth = Auth;
-    })
 ;

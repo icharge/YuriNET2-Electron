@@ -7,6 +7,8 @@
   "THAI": "Thai",
   "LOGIN": "Login",
   "OK": "Okay",
+  "YES": " Yes ",
+  "NO": " No ",
   "USERNAME": "Username",
   "PASSWORD": "Password",
   "REMEMBER_ME": "Remember me",
@@ -15,5 +17,7 @@
   "SIGN_UP": "Sign up",
   "SETTINGS": "Settings",
   "LOGIN_INCORRECT": "Username or Password is incorrect.",
-  "LOGIN_FAILED": "Can't communicate to server !"
+  "LOGIN_FAILED": "Can't communicate to server !",
+  "LOGOUT": "Logout",
+  "ASK_LOGOUT": "Hey {{playername}} !, Are you sure you want to logout ?"
 }

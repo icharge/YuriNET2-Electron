@@ -30,12 +30,33 @@ function resizeWindow(w, h) {
 }
 
 
+// Load Script Manager
+require('./public/js/script-manager');
+
+ScriptManager
+// Load all Angular scripts
+    .require('angular/angular.min')
+    .require('angular/angular-sanitize')
+    .require('angular/angular-animate.min')
+    .require('angular/angular-route.min')
+    .require('angular/angular-translate.min')
+    .require('angular/angular-translate-handler-log.min')
+    .require('angular/angular-translate-loader-static-files.min');
+
+// Load jQuery
+window.$ = window.jQuery = require('./public/js/jquery.min.js');
+
+// Load theme
+ScriptManager
+    .require('semantic.min')
+    .require('dropdown.min');
+
+
 /**
- * Theme Scripts
+ * Theme Scripts (using jQuery)
  */
 // On document ready
 $(function () {
-
 
 });
 
@@ -52,40 +73,8 @@ var app = angular.module('yuriNET', [
     'pascalprecht.translate' // Angular Translator
 ]);
 
-/**
- * Require application scripts.
- */
-var ScriptManager = new function () {
-    var prefixPath = './public/js/';
-    var suffixPath = '.js';
-    var ctrlPrefix = 'controllers/';
-    var ctrlSuffix = '-controller';
 
-    return {
-
-        /**
-         * Require script -- Load script by name without full path.
-         * @param scriptName Script name without '.js' suffix
-         * @returns {ScriptManager}
-         */
-        require: function (scriptName) {
-            require(prefixPath + scriptName + suffixPath);
-            return this;
-        },
-
-        /**
-         * Require controller -- Load controller by name without full path.
-         * @param ctrlName Controller name without '-controller.js' suffix
-         * @returns {ControllerManager}
-         */
-        requireController: function (ctrlName) {
-            require(prefixPath + ctrlPrefix + ctrlName + ctrlSuffix + suffixPath);
-            return this;
-        }
-    };
-}();
-
-
+// Script Manager will load scripts below.
 ScriptManager
     .require('config') // Configuration
     .require('constants') // Constants

@@ -44,21 +44,13 @@ ScriptManager
     .require('angular/angular-translate-loader-static-files.min');
 
 // Load jQuery
-window.$ = window.jQuery = require('./public/js/jquery.min.js');
+window.$ = window.jQuery = require('./public/js/plugins/jquery.min.js');
 
 // Load theme
 ScriptManager
-    .require('semantic.min')
-    .require('dropdown.min');
-
-
-/**
- * Theme Scripts (using jQuery)
- */
-// On document ready
-$(function () {
-
-});
+    .require('plugins/semantic.min')
+    .require('plugins/dropdown.min')
+    .require('custom');
 
 
 /**

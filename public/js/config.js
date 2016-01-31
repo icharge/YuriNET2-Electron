@@ -6,22 +6,26 @@
  */
 
 // Routing provider config
-app.config(function ($routeProvider, $httpProvider) {
-    $routeProvider
-        .when('/', {
+app.config(function ($urlRouterProvider, $stateProvider) {
+    // Set default for otherwise URL
+    $urlRouterProvider.otherwise('/');
+
+    // Setup state
+    $stateProvider
+        .state('index', {
+            url: '/',
             templateUrl: 'view/blank.html',
             controller: 'LandingController'
         })
-        .when('/main', {
+        .state('main', {
+            url: '/main',
             templateUrl: 'view/main-menu.html',
             controller: 'MainController'
         })
-        .when('/login', {
+        .state('login', {
+            url: '/login',
             templateUrl: 'view/login.html',
             controller: 'LoginController'
-        })
-        .otherwise({
-            redirectTo: '/'
         });
 
 });

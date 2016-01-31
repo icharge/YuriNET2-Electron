@@ -19,5 +19,13 @@
   "LOGIN_INCORRECT": "Username or Password is incorrect.",
   "LOGIN_FAILED": "Can't communicate to server !",
   "LOGOUT": "Logout",
-  "ASK_LOGOUT": "Hey {{playername}} !, Are you sure you want to logout ?"
+  "ASK_LOGOUT": "Hey {{playername}} !, Are you sure you want to logout ?",
+  "MENU_PLAY": "Play",
+  "MENU_PLAY_ONLINE": "Online",
+  "MENU_PLAY_OFFLINE": "Offline with bots",
+  "MENU_PLAY_MOD": "MOD",
+  "MENU_MAPS": "Maps",
+  "MENU_MAPS_ONLINE_BROWSE": "Browse",
+  "MENU_MAPS_INSTALLED": "Installed maps",
+  "MENU_MAPS_CREATE": "Make your own"
 }

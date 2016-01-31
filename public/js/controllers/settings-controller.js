@@ -9,6 +9,7 @@
 
 app.controller('SettingController', function ($scope, Translator) {
     $('.ui.dropdown').dropdown({
+        on: 'hover',
         action: 'hide'
     });
 

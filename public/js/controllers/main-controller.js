@@ -9,7 +9,7 @@
 
 app.controller('MainController', function ($scope, $location, Auth, Translator) {
     // Check Authentication
-    if (null == Auth.user) {
+    if (null == Auth.user()) {
         // Goto login page
         $location.path('/login');
     } else {
@@ -19,7 +19,7 @@ app.controller('MainController', function ($scope, $location, Auth, Translator) 
 
     // jQuery Dropdown
     $('.ui.menu .ui.dropdown').dropdown({
-        //on: 'hover'
+        on: 'hover',
         action: 'hide'
     });
 

@@ -18,7 +18,7 @@ app.controller('LoginController', function ($scope, $location, Auth, Translator)
      });*/
 
     // Clear Auth
-    Auth.user = null;
+    Auth.user(null);
 
     // Get Login form data
     try {
@@ -47,27 +47,32 @@ app.controller('LoginController', function ($scope, $location, Auth, Translator)
             hds: ''
         }).then(function (response) {
             // Check result
-            var data = Auth.user = response.data;
-            if (data.result.toLowerCase().indexOf('fail') < 0) {
-                console.log('Logged In : ' + data.playername);
-                /*
-                 Dialog.showMessageBox(remote.getCurrentWindow(), {
-                 type: 'info',
-                 title: 'YuriNET 2',
-                 buttons: ['OK'],
-                 message: 'You are logging in as ' + Auth.user.playername
-                 });
-                 */
-                $location.path('/main');
+            var data = Auth.user(response.data);
+            if (data && data.result) {
+                if (data.result.toLowerCase().indexOf('fail') < 0) {
+                    console.log('Logged In : ' + data.playername);
+                    sessionStorage.setItem('Auth', angular.toJson(data));
+
+                    $location.path('/main');
+                } else {
+                    console.warn('Incorrect credential');
+                    Dialog.showMessageBox(remote.getCurrentWindow(), {
+                        type: 'warning',
+                        title: Translator.getText('APP_NAME'),
+                        buttons: [Translator.getText('OK')],
+                        message: Translator.getText('LOGIN_INCORRECT')
+                    });
+                }
             } else {
-                console.warn('Incorrect credential');
+                console.error('Data :', data);
                 Dialog.showMessageBox(remote.getCurrentWindow(), {
-                    type: 'warning',
+                    type: 'error',
                     title: Translator.getText('APP_NAME'),
                     buttons: [Translator.getText('OK')],
-                    message: Translator.getText('LOGIN_INCORRECT')
+                    message: Translator.getText('LOGIN_ERROR')
                 });
             }
+
             $scope.loading = false;
 
             txtPass.focus();

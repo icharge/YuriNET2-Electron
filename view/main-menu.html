@@ -1,21 +1,28 @@
 <div class="ui menu violet">
     <div class="ui container">
-        <div class="header item">YuriNET</div>
-        <a class="active item">Link</a>
-        <a class="item">Link</a>
-        <div class="ui dropdown item" tabindex="0">
-            Dropdown
-            <i class="dropdown icon"></i>
-            <div class="menu transition hidden" tabindex="-1">
-                <div class="item">Action</div>
-                <div class="item">Another Action</div>
-                <div class="item">Something else here</div>
+        <div class="header item" style="width: 95px"></div>
+        <div class="ui dropdown bold item" tabindex="0">
+            {{ 'MENU_PLAY' | translate }}
+            <!--<i class="dropdown icon"></i>-->
+            <div class="menu transition" tabindex="-1">
+                <div class="item" data-translate="MENU_PLAY_ONLINE">Online</div>
+                <div class="item" data-translate="MENU_PLAY_OFFLINE">Offline with bots</div>
                 <div class="divider"></div>
-                <div class="item">Separated Link</div>
-                <div class="divider"></div>
-                <div class="item">One more separated link</div>
+                <div class="item" data-translate="MENU_PLAY_MOD">MODs</div>
             </div>
         </div>
+        <div class="ui dropdown item" tabindex="1">
+            {{ 'MENU_MAPS' | translate }}
+            <!--<i class="dropdown icon"></i>-->
+            <div class="menu transition" tabindex="-1">
+                <div class="item" data-translate="MENU_MAPS_ONLINE_BROWSE">Browse</div>
+                <div class="item" data-translate="MENU_MAPS_INSTALLED">Installed maps</div>
+                <div class="divider"></div>
+                <!--<div class="item" data-translate="MENU_MAPS_USER">My maps</div>-->
+                <div class="item" data-translate="MENU_MAPS_CREATE">Create new one</div>
+            </div>
+        </div>
+        <!--<a class="item">Link</a>-->
         <div class="right menu">
             <!--<div class="item">
                 <div class="ui transparent inverted icon input">
@@ -23,7 +30,8 @@
                     <input type="text" placeholder="Search">
                 </div>
             </div>-->
-            <a class="item" data-ng-click="logout()">{{ 'LOGOUT' | translate }}</a>
+            <a class="item icon" data-ng-click="openSettings()"><i class="settings icon"></i></a>
+            <a class="item icon" data-ng-click="logout()"><i class="power icon"></i></a>
         </div>
     </div>
 </div>

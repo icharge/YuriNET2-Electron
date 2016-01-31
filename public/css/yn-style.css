@@ -69,6 +69,11 @@ a:hover {
     text-decoration: underline;
 }
 
+.ui.menu {
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+}
 
 .ui.menu.violet {
     background-color: #3B236F;
@@ -81,25 +86,41 @@ a:hover {
 }
 
 .ui.violet.menu .item {
-    color: #B9A8DC!important;
+    color: #B9A8DC !important;
 }
 
-.ui.menu .violet.active.item, .ui.violet.menu .active.item {
-    color: #EFE7FF!important;
+.ui.menu .item.bold {
     font-weight: bold !important;
+}
+
+.ui.menu .violet.active.item,
+.ui.violet.menu .active.item {
+    color: #EFE7FF !important;
 }
 
 .ui.menu.violet .dropdown.item .menu {
     background: #694CA9;
 }
 
-.ui.menu.violet .ui.dropdown .menu>.item {
+.ui.menu.violet .ui.dropdown .menu > .item {
     color: #fff !important;
 }
 
 .ui.link.menu .item:hover, .ui.menu .dropdown.item:hover,
 .ui.menu .link.item:hover, .ui.menu a.item:hover {
     background: rgba(255, 255, 255, 0.18);
+}
+
+.ui.menu .header.item:after {
+    content: '';
+    background: url('../images/icon.png') no-repeat 50% -6px;
+    background-size: cover;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 90px;
+    height: 90px;
 }
 
 .ui.main.text.container {
@@ -123,22 +144,27 @@ a:hover {
     top: 0;
     bottom: 0;
 }
+
 .pop.ng-enter,
 .pop.ng-leave {
     -webkit-transition: all 1s ease;
     transition: all 1s ease;
 }
+
 .pop.ng-enter {
     -webkit-transform: scale(0);
     transform: scale(0);
 }
+
 .pop.ng-enter-active {
     -webkit-transform: scale(1);
     transform: scale(1);
 }
+
 .pop.ng-leave {
     opacity: 1;
 }
+
 .pop.ng-leave-active {
     opacity: 0;
 }

@@ -8,7 +8,7 @@
  */
 
 app.controller('LandingController', function ($scope, $location, Auth) {
-    if (null == Auth.user) {
+    if (null == Auth.user()) {
         $location.path('/login');
     } else {
         $location.path('/main');

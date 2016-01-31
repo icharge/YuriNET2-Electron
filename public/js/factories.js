@@ -60,10 +60,21 @@ app.factory('Auth', function ($http, CONST_URI) {
         joindate: '',
         logged: false
     };
-    userObj = null;
+    //userObj = angular.fromJson(sessionStorage.getItem('Auth')) || null;
 
     return {
-        user: userObj,
+        user: function (userObj) {
+            if (userObj) {
+                var data = userObj;
+                if (typeof userObj == "object")
+                    data = angular.toJson(userObj);
+
+                sessionStorage.setItem('Auth', data);
+                return userObj;
+            } else {
+                return angular.fromJson(sessionStorage.getItem('Auth')) || null;
+            }
+        },
         login: function (data) {
             return $http({
                 method: 'POST',

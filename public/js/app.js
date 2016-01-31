@@ -38,7 +38,7 @@ ScriptManager
     .require('angular/angular.min')
     .require('angular/angular-sanitize')
     .require('angular/angular-animate.min')
-    .require('angular/angular-route.min')
+    .require('angular/angular-ui-router.min')
     .require('angular/angular-translate.min')
     .require('angular/angular-translate-handler-log.min')
     .require('angular/angular-translate-loader-static-files.min');
@@ -61,7 +61,7 @@ ScriptManager
 // Initial Application
 var app = angular.module('yuriNET', [
     'ngSanitize', // Angular Sanitize
-    'ngRoute', // Angular Routing
+    'ui.router', // Angular Routing
     'ngAnimate', // Angular Animate
     'pascalprecht.translate' // Angular Translator
 ]);

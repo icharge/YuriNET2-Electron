@@ -8,6 +8,9 @@
  */
 
 app.controller('LandingController', function ($scope, $location, Auth) {
+
+    //playMusic();
+
     if (null == Auth.user()) {
         $location.path('/login');
     } else {

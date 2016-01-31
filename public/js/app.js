@@ -50,7 +50,8 @@ window.$ = window.jQuery = require('./public/js/plugins/jquery.min.js');
 ScriptManager
     .require('plugins/semantic.min')
     .require('plugins/dropdown.min')
-    .require('custom');
+    .require('custom')
+    .require('sound-system');
 
 
 /**

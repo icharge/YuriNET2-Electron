@@ -64,7 +64,7 @@ app.factory('Auth', function ($http, CONST_URI) {
 
     return {
         user: function (userObj) {
-            if (userObj) {
+            if (userObj || null === userObj) {
                 var data = userObj;
                 if (typeof userObj == "object")
                     data = angular.toJson(userObj);
@@ -84,7 +84,7 @@ app.factory('Auth', function ($http, CONST_URI) {
             });
         },
         logout: function () {
-            userObj = null;
+            this.user(null);
             $http({
                 method: 'POST',
                 url: CONST_URI.LOGOUT_URI

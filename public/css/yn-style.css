@@ -75,13 +75,14 @@ a:hover {
     border-right: 0;
 }
 
-.ui.menu.violet {
+.ui.violet.menu {
     background-color: #3B236F;
     color: #fff;
     border-radius: 0;
+    margin-bottom: 2rem;
 }
 
-.ui.menu.violet .ui.container {
+.ui.violet.menu .ui.container {
     background: #482A8A;
 }
 
@@ -98,11 +99,11 @@ a:hover {
     color: #EFE7FF !important;
 }
 
-.ui.menu.violet .dropdown.item .menu {
+.ui.violet.menu .dropdown.item .menu {
     background: #694CA9;
 }
 
-.ui.menu.violet .ui.dropdown .menu > .item {
+.ui.violet.menu .ui.dropdown .menu > .item {
     color: #fff !important;
 }
 

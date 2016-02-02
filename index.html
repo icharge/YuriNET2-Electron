@@ -2,7 +2,7 @@
 <html lang="{{ lang }}" data-ng-app="yuriNET">
 <head>
     <meta charset="UTF-8">
-    <title>{{ 'APP_NAME' | translate }} (Alpha)</title>
+    <title>YuriNET 2 (Alpha)</title>
 
     <!-- CSSs -->
     <!-- Semantic UI -->
@@ -40,6 +40,16 @@
         </div>
     </div>
 </div>
+
+<!-- State Debug info -->
+<div class="debug-info-fixed">
+    <div class="debug-info-content">
+        $state = {{$state.current.name}}<br />
+        $stateParams = {{$stateParams}}<br />
+        $state full url = {{ $state.$current.url.source }}
+    </div>
+</div>
+
 <div data-ui-view="" data-ng-class="'pop'"></div>
 <script>
     function createNewWindow() {

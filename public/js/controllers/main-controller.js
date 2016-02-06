@@ -17,11 +17,7 @@ app.controller('MainController', function ($scope, $location, Auth, Translator) 
         $scope.user = Auth.user;
     }
 
-    // jQuery Dropdown
-    $('.ui.menu .ui.dropdown').dropdown({
-        on: 'hover',
-        action: 'hide'
-    });
+
 
     /**
      * Functions that buttons use.

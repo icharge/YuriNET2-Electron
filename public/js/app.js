@@ -72,6 +72,7 @@ ScriptManager
     .require('config') // Configuration
     .require('constants') // Constants
     .require('factories') // Factories
+    .require('directives') // Directives
     .require('controllers') // Controllers
 ;
 

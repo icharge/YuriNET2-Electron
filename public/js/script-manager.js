@@ -11,11 +11,13 @@ ScriptManager = new function () {
     var suffixPath = ''; // No need to specified '.js'
     var ctrlPrefix = 'controllers/';
     var ctrlSuffix = '-controller';
+    var dirtPrefix = 'directives/';
+
 
     return {
 
         /**
-         * Require script -- Load script by name without full path.
+         * Load script by name without full path.
          * @param scriptName Script name without '.js' suffix
          * @returns {ScriptManager}
          */
@@ -25,12 +27,22 @@ ScriptManager = new function () {
         },
 
         /**
-         * Require controller -- Load controller by name without full path.
+         * Load controller by name without full path.
          * @param ctrlName Controller name without '-controller.js' suffix
          * @returns {ControllerManager}
          */
         requireController: function (ctrlName) {
             require(prefixPath + ctrlPrefix + ctrlName + ctrlSuffix + suffixPath);
+            return this;
+        },
+
+        /**
+         * Load directive by name without full path.
+         * @param directiveName
+         * @returns {ScriptManager}
+         */
+        requireDirective: function (directiveName) {
+            require(prefixPath + dirtPrefix + directiveName + suffixPath);
             return this;
         }
     };

@@ -9,6 +9,7 @@
   "author": "Norrapat Nimmanee",
   "license": "ISC",
   "devDependencies": {
+    "debug-menu": "^0.2.0",
     "electron-prebuilt": "^0.36.0"
   },
   "repository": {
@@ -21,6 +22,7 @@
     "angular-route": "^1.4.9",
     "angular-sanitize": "^1.4.9",
     "angular-translate": "^2.8.1",
-    "angular-ui-router": "^0.2.17"
+    "angular-ui-router": "^0.2.17",
+    "electron-debug": "^0.5.1"
   }
 }

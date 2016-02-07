@@ -10,6 +10,14 @@ const dialog = electron.dialog;
 const shell = electron.shell;
 const Menu = electron.Menu;
 
+// Use debugger mode??
+const DEBUG = true;
+global['DEBUG'] = DEBUG;
+if (DEBUG) {
+    require('electron-debug')({
+        showDevTools: true
+    });
+}
 
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -41,7 +49,7 @@ function createWindow() {
     mainWindow.loadURL('file://' + __dirname + '/index.html');
 
     // Open the DevTools.
-    mainWindow.webContents.openDevTools();
+    //if (DEBUG) mainWindow.webContents.openDevTools();
     mainWindow.focus();
     mainWindow.focusOnWebView();
 

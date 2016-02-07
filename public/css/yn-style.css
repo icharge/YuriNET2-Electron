@@ -95,9 +95,40 @@ a:hover {
     font-weight: bold !important;
 }
 
+.ui.menu .ui.dropdown .menu > .active.item {
+    background: rgba(255, 255, 255, 0.10) !important;
+    font-weight: 900 !important;
+}
+
 .ui.menu .violet.active.item,
 .ui.violet.menu .active.item {
     color: #EFE7FF !important;
+}
+
+.ui.menu .item.selected {
+    color: #fff !important;
+    background-color: #331F5F;
+}
+
+.ui.menu .item.selected:before {
+    content: ' ';
+    box-shadow: 8px 0 4px -5px #301C5C inset;
+    height: 100%;
+    left: -.6px;
+    position: absolute;
+    top: 0;
+    width: 50%;
+    background: transparent;
+}
+
+.ui.menu .item.selected::after {
+    content: ' ';
+    box-shadow: -8px 0 4px -6px #301C5C inset;
+    height: 100%;
+    right: 0px;
+    position: absolute;
+    top: 0;
+    width: 50%;
 }
 
 .ui.violet.menu .dropdown.item .menu {

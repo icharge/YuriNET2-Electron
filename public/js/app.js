@@ -11,14 +11,20 @@
 /**
  * Electron scripts
  */
-const remote = require('electron').remote;
+const electron = require('electron');
+const remote = electron.remote;
+const ipcRenderer = electron.ipcRenderer;
 const BrowserWindow = remote.BrowserWindow;
 const Dialog = remote.dialog;
 const Session = remote.session;
-
 const child = require('child_process');
 const spawn = child.spawn;
 
+// Debug info.
+var DEBUG = remote.getGlobal('DEBUG');
+console.log('Application was started on ' + (DEBUG ? 'Debug' : 'Production') + ' mode.');
+
+// Functions that must use.
 function exitApplication() {
     remote.app.quit();
 }

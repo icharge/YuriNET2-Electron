@@ -1,11 +1,11 @@
 <div class="ui menu violet">
     <div class="ui container">
-        <div class="header item" style="width: 95px"></div>
+        <div class="header item" style="width: 95px" data-ui-sref="main"></div>
         <div class="ui dropdown bold item" tabindex="0">
             {{ 'MENU_PLAY' | translate }}
             <!--<i class="dropdown icon"></i>-->
             <div class="menu transition" tabindex="-1">
-                <div class="item" data-translate="MENU_PLAY_ONLINE">Online</div>
+                <div class="item" data-ui-sref="main.play" data-translate="MENU_PLAY_ONLINE">Online</div>
                 <div class="item" data-translate="MENU_PLAY_OFFLINE">Offline with bots</div>
                 <div class="divider"></div>
                 <div class="item" data-translate="MENU_PLAY_MOD">MODs</div>

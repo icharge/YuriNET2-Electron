@@ -22,6 +22,18 @@ app.config(function ($urlRouterProvider, $stateProvider) {
             templateUrl: 'view/main-menu.html',
             controller: 'MainController'
         })
+        .state('main.play', {
+            url: '/play',
+            views: {
+                '' : {
+                    templateUrl: 'view/play/play.html'
+                }
+            }
+        })
+        .state('main.play.online', {
+            url: '/online'
+
+        })
         .state('login', {
             url: '/login',
             templateUrl: 'view/login.html',

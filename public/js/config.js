@@ -25,14 +25,18 @@ app.config(function ($urlRouterProvider, $stateProvider) {
         .state('main.play', {
             url: '/play',
             views: {
-                '' : {
+                '': {
                     templateUrl: 'view/play/play.html'
                 }
             }
         })
         .state('main.play.online', {
-            url: '/online'
-
+            url: '/online',
+            views: {
+                '': {
+                    templateUrl: 'view/play/online-lobby.html'
+                }
+            }
         })
         .state('login', {
             url: '/login',

@@ -3,6 +3,7 @@
  *
  * @author iCharge
  * @since 31-Jan-16.
+ * @requires jQuery
  */
 
 
@@ -36,11 +37,25 @@ SoundController = new function () {
 
 // Music
 var music = null;
+var musicVol = .3;
 
 playMusic = function () {
     if (null == music) {
-        music = SoundController.play('indeep.mp3', .4);
-        music.loop = true;
+        try {
+            music = SoundController.play('drok.mp3', musicVol);
+            music.loop = true;
+        } catch (e) {
+            console.error('Can\'t play music. ', e);
+        }
+    }
+};
+
+setMusicVol = function (vol, callback) {
+    if (null != music) {
+        musicVol = vol;
+        //music.volume = musicVol;
+        // Using jQuery to fade.
+        $(music).animate({volume: vol}, 300, callback);
     }
 };
 

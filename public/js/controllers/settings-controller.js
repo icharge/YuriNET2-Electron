@@ -27,7 +27,11 @@ app.controller('SettingController', function ($scope, Translator) {
         } catch (e) {
             console.log('Exec Error, Maybe need Administrator privileges.', e);
         }
+    };
 
-
+    $scope.setMusic = function (value) {
+        playMusic();
+        setMusicVol(value ?.3:0);
+        localStorage.setItem('Music', value);
     };
 });

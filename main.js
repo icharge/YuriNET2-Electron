@@ -60,6 +60,11 @@ function createWindow() {
         // when you should delete the corresponding element.
         mainWindow = null;
     });
+
+    // On minimized.
+    mainWindow.on('minimize', function () {
+
+    });
 }
 
 // This method will be called when Electron has finished

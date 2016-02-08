@@ -35,6 +35,38 @@ function resizeWindow(w, h) {
     win.setSize(w, h);
 }
 
+function getWindow() {
+    return remote.getCurrentWindow();
+}
+
+/** Event handler */
+// Before unloading event.
+var canClose = false;
+window.onbeforeunload = function (e) {
+    // Fade out music before close.
+    if (!canClose) {
+        setMusicVol(0, function () {
+            canClose = true;
+            exitApplication();
+        });
+    } else {
+        // Do some stuff.
+
+    }
+    e.returnValue = canClose;
+};
+
+// On minimized.
+getWindow().on('minimize', function () {
+    //setMusicVol(0);
+});
+
+// On restored.
+getWindow().on('restore', function () {
+    /*if (localStorage.getItem('Music') == "true") {
+        setMusicVol(.3);
+    }*/
+});
 
 // Load Script Manager
 require('./public/js/script-manager');

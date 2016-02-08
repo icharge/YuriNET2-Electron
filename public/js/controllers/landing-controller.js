@@ -9,7 +9,11 @@
 
 app.controller('LandingController', function ($scope, $location, Auth) {
 
-    //playMusic();
+    // Read and play music.
+    var isMusic = localStorage.getItem('Music') == "false" ? false : true; // Load config.
+    if (isMusic)
+        playMusic();
+    localStorage.setItem('Music', isMusic); // save config.
 
     if (null == Auth.user()) {
         $location.path('/login');

@@ -56,6 +56,9 @@ setMusicVol = function (vol, callback) {
         //music.volume = musicVol;
         // Using jQuery to fade.
         $(music).animate({volume: vol}, 300, callback);
+    } else {
+        if (typeof callback == 'function')
+            callback();
     }
 };
 

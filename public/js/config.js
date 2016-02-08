@@ -38,6 +38,14 @@ app.config(function ($urlRouterProvider, $stateProvider) {
                 }
             }
         })
+        .state('main.play.local', {
+            url: '/skirmish',
+            views: {
+                '': {
+                    templateUrl: 'view/play/skirmish.html'
+                }
+            }
+        })
         .state('login', {
             url: '/login',
             templateUrl: 'view/login.html',

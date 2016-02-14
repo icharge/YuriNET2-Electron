@@ -36,6 +36,7 @@ app.directive('navHeader', function () {
     return {
         restrict: 'E',
         templateUrl: 'view/ui/nav-header.html',
+        //replace: true,
         link: function (scope, element, attr) {
             // jQuery Dropdown
             $(element).find('.ui.menu .ui.dropdown').dropdown({

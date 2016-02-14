@@ -176,7 +176,7 @@ a:hover {
 }
 
 /* Angular Transition */
-.pop {
+.pop.transition {
     position: absolute;
     left: 0;
     right: 0;
@@ -184,28 +184,60 @@ a:hover {
     bottom: 0;
 }
 
-.pop.ng-enter,
-.pop.ng-leave {
+.pop.transition.ng-enter,
+.pop.transition.ng-leave {
     -webkit-transition: all 1s ease;
     transition: all 1s ease;
 }
 
-.pop.ng-enter {
+.pop.transition.ng-enter {
     -webkit-transform: scale(0);
     transform: scale(0);
 }
 
-.pop.ng-enter-active {
+.pop.transition.ng-enter-active {
     -webkit-transform: scale(1);
     transform: scale(1);
 }
 
-.pop.ng-leave {
+.pop.transition.ng-leave {
     opacity: 1;
 }
 
-.pop.ng-leave-active {
+.pop.transition.ng-leave-active {
     opacity: 0;
+}
+
+.fade.transition {
+
+}
+
+.fade.transition.ng-enter,
+.fade.transition.ng-leave {
+    -webkit-transition: opacity 1s ease;
+    transition: opacity 1s ease;
+}
+
+.fade.transition.ng-enter {
+    opacity: 0;
+}
+
+.fade.transition.ng-enter-active {
+    opacity: 1;
+}
+
+.fade.transition.ng-leave {
+    opacity: 1;
+}
+
+.fade.transition.ng-leave-active {
+    opacity: 0;
+}
+
+.main .fade.transition {
+    position: absolute;
+    left: 0;
+    right: 0;
 }
 
 /* End Angular Transition */
@@ -214,6 +246,7 @@ a:hover {
 .btn-settings {
     position: fixed;
     z-index: 99999;
+    bottom: 0;
 }
 
 .btn-settings .ui.button {

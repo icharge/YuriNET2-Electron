@@ -37,7 +37,7 @@ SoundController = new function () {
 
 // Music
 var music = null;
-var musicVol = .3;
+var musicVol = .1;
 
 playMusic = function () {
     if (null == music) {

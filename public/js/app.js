@@ -40,9 +40,9 @@ function getWindow() {
 }
 
 /** Event handler */
-// Before unloading event.
-var canClose = false;
-window.onbeforeunload = function (e) {
+// Before unloading event
+/* var canClose = false;
+window.on('close', function (e) {
     // Fade out music before close.
     if (!canClose) {
         setMusicVol(0, function () {
@@ -53,8 +53,11 @@ window.onbeforeunload = function (e) {
         // Do some stuff.
 
     }
+    console.log(e);
+    alert(JSON.stringify(e));
     e.returnValue = canClose;
-};
+});
+*/
 
 // On minimized.
 getWindow().on('minimize', function () {

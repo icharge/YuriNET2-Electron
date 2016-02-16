@@ -22,6 +22,10 @@ a:hover {
     color: #C999E4;
 }
 
+[data-ng-click], .clickable {
+    cursor: pointer;
+}
+
 .violet {
     color: #712C99;
 }

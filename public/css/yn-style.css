@@ -22,6 +22,10 @@ a:hover {
     color: #C999E4;
 }
 
+.main.container {
+    margin-top: 7em;
+}
+
 [data-ng-click], .clickable {
     cursor: pointer;
 }

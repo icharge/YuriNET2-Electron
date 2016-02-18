@@ -91,6 +91,8 @@ window.$ = window.jQuery = require('./public/js/plugins/jquery.min.js');
 ScriptManager
     .require('plugins/semantic.min')
     .require('plugins/dropdown.min')
+    //.require('plugins/jquery.dataTables.min') // Can't do it here.
+    //.require('plugins/dataTables.semanticui.min') // Can't do it here.
     .require('custom')
     .require('sound-system');
 

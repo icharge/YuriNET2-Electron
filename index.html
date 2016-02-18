@@ -8,11 +8,13 @@
     <!-- Semantic UI -->
     <link rel="stylesheet" href="public/css/semantic.min.css"/>
     <link rel="stylesheet" href="public/css/dropdown.min.css"/>
+    <link rel="stylesheet" href="public/css/dataTables.semanticui.min.css"/>
     <link rel="stylesheet" href="public/css/yn-style.css"/>
 
     <!-- Main Application -->
     <script src="public/js/app.js"></script>
-
+    <script src="public/js/plugins/jquery.dataTables.min.js"></script>
+    <script src="public/js/plugins/dataTables.semanticui.min.js"></script>
 </head>
 <body>
 <div class="btn-settings" data-ng-controller="SettingController">
@@ -64,7 +66,7 @@
     </div>
 </div>
 
-<div data-ui-view="" class="pop transition"></div>
+<div data-ui-view="" class="scene pop transition"></div>
 <script>
     function createNewWindow() {
         var popup = new BrowserWindow({width: 800, height: 600});

@@ -34,5 +34,5 @@
 
 ScriptManager
     .requireDirective('ui-nav-header')
-
+    .requireDirective('ui-gameroom-table')
 ;

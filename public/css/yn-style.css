@@ -242,8 +242,9 @@ a:hover {
     opacity: 0;
 }
 
-.main .fade.transition {
+.scene .sub.fade.transition {
     position: absolute;
+    top: 5rem;
     left: 0;
     right: 0;
 }
@@ -274,3 +275,9 @@ a:hover {
     background: rgba(93, 93, 93, 0.6);
     color: #fff;
 }
+
+/* Hide first header for table */
+.dataTables_scrollBody table thead {
+    visibility: hidden;
+}
+

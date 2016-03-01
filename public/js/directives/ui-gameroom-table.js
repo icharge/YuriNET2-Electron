@@ -13,10 +13,13 @@ app.directive('gameroomTable', function () {
         link: function (scope, element, attr) {
             // jQuery Datatable
             $(element).DataTable({
-                //scrollY: 200,
+                scrollY: '50vh',
                 scrollCollapse: true,
-                paging: false
+                paging: false,
+                searching: false
             });
+
+            $.fn.dataTable.tables( {visible: true, api: true} ).columns.adjust();
         }
     };
 });

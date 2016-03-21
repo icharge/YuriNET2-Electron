@@ -19,9 +19,10 @@ app.controller('SettingController', function ($scope, Translator) {
 
     $scope.launch = function () {
         try {
+            // miyuki.i4th.in.th:4434
             var yuriExec = spawn('C:\\Westwood\\Ra2\\RA2MD.exe', {
                 env: {
-                    'CNCNET_URL': 'ra2:v4serv=miyuki.i4th.in.th:4434'
+                    'CNCNET_URL': 'ra2:v4serv=localhost:9000'
                 }
             });
         } catch (e) {

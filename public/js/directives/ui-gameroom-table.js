@@ -16,10 +16,15 @@ app.directive('gameroomTable', function () {
                 scrollY: '50vh',
                 scrollCollapse: true,
                 paging: false,
-                searching: false
+                searching: false,
+                //ordering: false
+                order: []
             });
 
-            $.fn.dataTable.tables( {visible: true, api: true} ).columns.adjust();
+            setTimeout(function () {
+                $.fn.dataTable.tables( {visible: true, api: true} ).columns.adjust();
+            }, 0);
+
         }
     };
 });

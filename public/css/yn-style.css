@@ -281,3 +281,6 @@ a:hover {
     visibility: hidden;
 }
 
+#gameRoom td:first-child {
+    text-align: center;
+}

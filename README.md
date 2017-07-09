@@ -3,6 +3,7 @@
 A Client application for game **CnC Red Alert 2 : Yuri's Revenge** to let players connecting online network gaming.  This project using **Electron/NodeJS** to development.
 
 > Server system based on and Special thanks to [**hifi** *(Toni Spets)*](https://github.com/hifi).
+
 > Using starter kit from [maximegris's angular-electron](https://github.com/maximegris/angular-electron)
 
 ## Project information

@@ -26,7 +26,7 @@ a:hover {
     margin-top: 7em;
 }
 
-[data-ng-click], .clickable {
+.clickable {
     cursor: pointer;
 }
 
@@ -34,36 +34,42 @@ a:hover {
     color: #712C99;
 }
 
-.ui.form input:not([type]), .ui.form input[type=text],
-.ui.form input[type=email], .ui.form input[type=search],
-.ui.form input[type=password], .ui.form input[type=date],
-.ui.form input[type=datetime-local], .ui.form input[type=tel],
-.ui.form input[type=time], .ui.form input[type=url],
-.ui.form input[type=number] {
-    background: #E8E8E8;
+.ui.form {
+    input:not([type]), input[type=text],
+    input[type=email], input[type=search],
+    input[type=password], input[type=date],
+    input[type=datetime-local], input[type=tel],
+    input[type=time], input[type=url],
+    input[type=number] {
+        background: #E8E8E8;
+    }
+    
+    .field, .fields {
+        &.error {
+            input:not([type]), input[type=text],
+            input[type=email], input[type=search],
+            input[type=password], input[type=date],
+            input[type=datetime-local], input[type=tel],
+            input[type=time], input[type=url],
+            input[type=number], select,
+            textarea {
+                background: #FFDFDD;
+                border-color: #FB8B77;
+                color: #9f3a38;
+            }
+        }
+    }
+    
+    
 }
 
-.ui.checkbox .box, .ui.checkbox label {
-    cursor: pointer;
+.ui.checkbox {
+    .box, label {
+        cursor: pointer;
+    }
 }
 
-.ui.form .field.error input:not([type]), .ui.form .field.error input[type=text],
-.ui.form .field.error input[type=email], .ui.form .field.error input[type=search],
-.ui.form .field.error input[type=password], .ui.form .field.error input[type=date],
-.ui.form .field.error input[type=datetime-local], .ui.form .field.error input[type=tel],
-.ui.form .field.error input[type=time], .ui.form .field.error input[type=url],
-.ui.form .field.error input[type=number], .ui.form .field.error select,
-.ui.form .field.error textarea, .ui.form .fields.error .field input:not([type]),
-.ui.form .fields.error .field input[type=text], .ui.form .fields.error .field input[type=email],
-.ui.form .fields.error .field input[type=search], .ui.form .fields.error .field input[type=password],
-.ui.form .fields.error .field input[type=date], .ui.form .fields.error .field input[type=datetime-local],
-.ui.form .fields.error .field input[type=tel], .ui.form .fields.error .field input[type=time],
-.ui.form .fields.error .field input[type=url], .ui.form .fields.error .field input[type=number],
-.ui.form .fields.error .field select, .ui.form .fields.error .field textarea {
-    background: #FFDFDD;
-    border-color: #FB8B77;
-    color: #9f3a38;
-}
+
 
 .ui.violet.button, .ui.violet.buttons .button {
     background-color: #712C99;

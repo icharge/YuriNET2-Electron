@@ -7,8 +7,12 @@ const args = process.argv.slice(1);
 serve = args.some(val => val === "--serve");
 
 if (serve) {
+  // let electronPath: string = path.join(__dirname, '../node_modules', '.bin', 'electron.cmd');
   require('electron-reload')(__dirname, {
+    // electron: electronPath,
+    // hardResetMethod: 'exit',
   });
+  // console.log(electronPath);
 }
 
 function createWindow() {

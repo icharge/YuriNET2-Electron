@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { AlertController } from '../../providers/alert/alert.controller';
 
 @Component({
   selector: 'login-page',
@@ -13,6 +14,7 @@ export class LoginPage {
   isSubmitted: boolean;
 
   constructor(
+    private alertCtrl: AlertController,
 
   ) {
     this.isSubmitted = false;
@@ -23,7 +25,7 @@ export class LoginPage {
     console.debug('Submit form :', form);
 
     this.isSubmitted = true;
-    let formError = { INVALID_CREDENTIAL: true };
+    this.alertCtrl.confirm('YuriNET', 'hello');
   }
 
 }

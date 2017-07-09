@@ -47,6 +47,7 @@
     "core-js": "2.4.1",
     "ng2-semantic-ui": "^0.9.2",
     "rxjs": "5.4.0",
+    "ts-md5": "^1.2.0",
     "zone.js": "0.8.11"
   },
   "devDependencies": {

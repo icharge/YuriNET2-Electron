@@ -8,7 +8,6 @@ import { Observable, Subject } from 'rxjs';
 // import { ConfigService } from '../config';
 import { Injectable } from '@angular/core';
 import { RxJSUtil } from "../../utilities/rxjs.util";
-import { EAFSessionModel } from '../../model/authentication/eaf-session.model';
 
 export function urlEncode(obj: Object): string {
   let urlSearchParams = new URLSearchParams();

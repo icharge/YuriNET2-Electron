@@ -1,0 +1,50 @@
+<div class="login ui middle aligned center aligned grid">
+  <div class="column">
+    <h2 class="ui violet image header">
+      <div class="content">
+        <img src="../../../assets/images/logo_sm.png" class="image" />
+      </div>
+    </h2>
+    <form #loginForm="ngForm" class="ui large form" (ngSubmit)="submitLogin($event, loginForm)">
+      <div class="ui stacked segment">
+        <div class="field" [ngClass]="{'error' : username.invalid && submitted}">
+          <div class="ui left icon input">
+            <i class="user icon"></i>
+            <input type="text" name="username" #username="ngModel" placeholder="{{ 'USERNAME' | translate }}" [(ngModel)]="formData.username"
+              required/>
+          </div>
+        </div>
+        <div class="field" [ngClass]="{'error' : password.invalid && submitted}">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            <input type="password" name="password" #password="ngModel" placeholder="{{ 'PASSWORD' | translate }}" [(ngModel)]="formData.password"
+              required />
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui checkbox">
+            <input type="checkbox" name="remember" [(ngModel)]="formData.remember" />
+            <label for="remember">{{ 'REMEMBER_ME' | translate }}</label>
+          </div>
+        </div>
+        <div class="ui two buttons">
+          <button type="button" class="ui fluid large button" onclick="exitApplication()">{{ 'EXIT' | translate }}</button>
+          <button type="submit" class="ui fluid large violet submit button" [ngClass]="loading ? 'loading' : ''" [disabled]="loading || loginForm.invalid">{{ 'LOGIN' | translate}}</button>
+        </div>
+
+      </div>
+
+      <div class="ui error message"></div>
+
+    </form>
+
+    <div class="ui message">
+      {{ 'INVITE_TO_REGISTER_MSG' | translate }} <a href="#">{{ 'SIGN_UP' | translate }}</a>
+    </div>
+    <!--<div class="ui message">
+            Node: <script>document.write(process.versions.node)</script><br />
+            CEF: <script>document.write(process.versions.chrome)</script><br />
+            Electron: <script>document.write(process.versions.electron)</script>
+        </div>-->
+  </div>
+</div>

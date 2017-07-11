@@ -3,7 +3,7 @@ import 'reflect-metadata';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, JsonpModule } from '@angular/http';
 import { SuiModule } from 'ng2-semantic-ui';
 import { LocalizationModule, LocaleService, TranslationService, TranslationModule } from 'angular-l10n';
 
@@ -15,10 +15,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { ElectronService } from './providers/electron.service';
 import { AppState } from './app.state';
 import { AlertController } from './providers/alert/alert.controller';
+import { HttpService } from './providers/http-service/http.service';
+import { AuthSerivce } from './providers/auth-service/auth.service';
 
 @NgModule({
   imports: [
     BrowserModule,
+    JsonpModule,
     FormsModule,
     HttpModule,
     AppRoutingModule,
@@ -34,6 +37,8 @@ import { AlertController } from './providers/alert/alert.controller';
     AppState,
     ElectronService,
     AlertController,
+    HttpService,
+    AuthSerivce,
   ],
   bootstrap: [AppComponent]
 })

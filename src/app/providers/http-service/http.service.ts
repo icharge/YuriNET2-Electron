@@ -7,12 +7,14 @@ import { Http, Response, URLSearchParams, Headers, RequestOptions, Jsonp, Reques
 import { Observable, Subject } from 'rxjs';
 // import { ConfigService } from '../config';
 import { Injectable } from '@angular/core';
-import { RxJSUtil } from "../../utilities/rxjs.util";
+import { RxJSUtil } from '../../utilities/rxjs.util';
 
 export function urlEncode(obj: Object): string {
-  let urlSearchParams = new URLSearchParams();
-  for (let key in obj) {
-    urlSearchParams.append(key, obj[key]);
+  const urlSearchParams = new URLSearchParams();
+  for (const key in obj) {
+    if (obj[key]) {
+      urlSearchParams.append(key, obj[key]);
+    }
   }
   return urlSearchParams.toString();
 }
@@ -25,6 +27,13 @@ export enum RequestContentType {
 
 @Injectable()
 export class HttpService {
+
+  /**
+   * Make a complete of URL
+   */
+  public static urlWithHost(url: string): string {
+    return this.hostname + url;
+  }
 
   constructor(
     //public config: ConfigService,
@@ -39,13 +48,6 @@ export class HttpService {
     return ''; // TODO: fix here
   }
 
-  /**
-   * Make a complete of URL
-   */
-  public static urlWithHost(url: string): string {
-    return this.hostname + url;
-  }
-
   protected handleError(error: Response) {
     // in a real world app, we may send the error to some remote logging infrastructure
     // instead of just logging it to the console
@@ -56,7 +58,7 @@ export class HttpService {
   /**
    * HTTP Get request
    * this will return observable with mapped response data as Object
-   * 
+   *
    * @param url URL
    * @param searchParams (Optional) Search parameters as Map
    * @param headerAdditional (Optional) Request header as Map
@@ -65,7 +67,7 @@ export class HttpService {
     [key: string]: any | any[];
   }, headerAdditional?: { [key: string]: any }): Observable<T> {
 
-    let observable = this.httpGetObservable<T>(url, searchParams, headerAdditional)
+    const observable = this.httpGetObservable<T>(url, searchParams, headerAdditional)
       .map(res => <T>res.json())
       // .do(data => console.log('HTTP Get:', data)) // eyeball results in the console
       .catch(this.handleError);
@@ -77,9 +79,9 @@ export class HttpService {
   /**
    * HTTP Get request
    * this will return observable without mapped response data
-   * 
+   *
    * @param url URL
-   * @param searchParams (Optional) Search parameters as Map 
+   * @param searchParams (Optional) Search parameters as Map
    * @param headerAdditional (Optional) Request header as Map
    */
   public httpGetObservable<T>(url: string, searchParams?: string | URLSearchParams | {
@@ -100,7 +102,7 @@ export class HttpService {
     //   }
     // }
 
-    let headers = new Headers({
+    const headers = new Headers({
       'X-Requested-With': 'XMLHttpRequest',
       ...headerAdditional,
     });
@@ -111,9 +113,9 @@ export class HttpService {
   /**
    * HTTP Post request
    * this will return observable without mapped response data
-   * 
+   *
    * @param url URL
-   * @param searchParams (Optional) Search parameters as Map 
+   * @param searchParams (Optional) Search parameters as Map
    * @param bodyParams (Optional) Body parameters as Map
    * @param contentType (Optional) Request Content Type. Possible value will be APPLICATION/JSON or FORM-URLENCODED @see RequestContentType
    * @param headerAdditional (Optional) Request header as Map
@@ -141,12 +143,12 @@ export class HttpService {
 
     let headers = null;
 
-    if (contentType == RequestContentType.MULTI_PART)
+    if (contentType === RequestContentType.MULTI_PART) {
       headers = new Headers({
         'X-Requested-With': 'XMLHttpRequest',
         ...headerAdditional,
       });
-    else {
+    } else {
       headers = new Headers({
         'Content-Type': contentType,
         'X-Requested-With': 'XMLHttpRequest',
@@ -155,14 +157,14 @@ export class HttpService {
     }
 
 
-    let options = new RequestOptions({ headers: headers, search: searchParams, body });
+    const options = new RequestOptions({ headers: headers, search: searchParams, body });
     return this.http.post(url, body, options);
   }
 
   /**
    * HTTP Post request
    * this will return observable without mapped response data
-   * 
+   *
    * @param url URL
    * @param searchParams (Optional) Search parameters as Map
    * @param bodyParams (Optional) Body parameters as Map
@@ -171,7 +173,7 @@ export class HttpService {
    */
   public httpPost<T>(url: string, searchParams?: { [key: string]: any }, bodyParams?: { [key: string]: any },
     contentType?: RequestContentType, headerAdditional?: { [key: string]: any }): Observable<T> {
-    let observable = this.httpPostObservable<T>(url, searchParams, bodyParams, contentType, headerAdditional)
+    const observable = this.httpPostObservable<T>(url, searchParams, bodyParams, contentType, headerAdditional)
       .map(res => <T>res.json())
       .catch(this.handleError);
 
@@ -205,17 +207,17 @@ export class HttpService {
 
   /**
    * Make a JSONP request (rarely use)
-   * 
+   *
    * @param url URL
    * @param params (Optional) Search parameters
    * @param contentType Content type @see RequestContentType
    */
   public httpJSONP<T>(url: string, params?: { [key: string]: any }, contentType?: RequestContentType): Observable<T> {
-    var search = new URLSearchParams()
+    const search = new URLSearchParams()
     if (params != null) {
-      for (let key in params) {
+      for (const key in params) {
         if (params.hasOwnProperty(key)) {
-          let value = params[key];
+          const value = params[key];
           search.set(key, value);
         }
       }
@@ -225,13 +227,13 @@ export class HttpService {
 
   /**
    * Get an ArrayBuffer (super rarely use)
-   * 
+   *
    * @param url URL
    * @param search (Optional) Search parameters
    */
   public httpGetArrayBuffer(url: string, search?: { [key: string]: any }): Observable<ArrayBuffer> {
 
-    let options: RequestOptionsArgs = {
+    const options: RequestOptionsArgs = {
       search,
       responseType: ResponseContentType.ArrayBuffer,
     }
@@ -241,13 +243,13 @@ export class HttpService {
 
   /**
   * Get an Blob (super ultra rarely use)
-  * 
+  *
   * @param url URL
   * @param search (Optional) Search parameters
   */
   public httpGetBlob(url: string, search?: { [key: string]: any }): Observable<Blob> {
 
-    let options: RequestOptionsArgs = {
+    const options: RequestOptionsArgs = {
       search,
       responseType: ResponseContentType.Blob,
     }

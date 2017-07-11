@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AlertController } from '../../providers/alert/alert.controller';
+import { AuthSerivce } from '../../providers/auth-service/auth.service';
 
 @Component({
   selector: 'login-page',
@@ -15,7 +16,7 @@ export class LoginPage {
 
   constructor(
     private alertCtrl: AlertController,
-
+    private auth: AuthSerivce,
   ) {
     this.isSubmitted = false;
   }
@@ -26,6 +27,10 @@ export class LoginPage {
 
     this.isSubmitted = true;
     this.alertCtrl.confirm('YuriNET', 'hello');
+
+    this.auth.login(this.formData.username, this.formData.password).subscribe((response) => {
+      console.debug('Logged in response :', response);
+    });
   }
 
 }

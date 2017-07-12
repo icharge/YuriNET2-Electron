@@ -11,7 +11,7 @@ export class AuthSerivce {
   ) { }
 
   public login(username: string, password: string): Observable<any> {
-    return this.http.httpPost(AppConstant.URL.BASE, null, {
+    return this.http.httpPost(AppConstant.LOGIN_URL, null, {
       u: username,
       p: password,
       hds: '', // TODO: HDD Serial

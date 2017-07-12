@@ -8,12 +8,10 @@ export class AppConstant {
     HOST: 'play.thaira2.com',
   };
 
-  public static URL = class {
 
-    public static BASE = `${AppConstant.URI.PROTOCOL.HTTP}://${AppConstant.URI.HOST}`;
+  public static BASE_URL = `${AppConstant.URI.PROTOCOL.HTTP}://${AppConstant.URI.HOST}`;
 
-  }
-
+  public static LOGIN_URL = `${AppConstant.BASE_URL}/auth/loginyn`;
 
   private constructor() { }
 

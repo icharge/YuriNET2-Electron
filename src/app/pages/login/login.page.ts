@@ -26,10 +26,19 @@ export class LoginPage {
     console.debug('Submit form :', form);
 
     this.isSubmitted = true;
-    this.alertCtrl.confirm('YuriNET', 'hello');
 
     this.auth.login(this.formData.username, this.formData.password).subscribe((response) => {
       console.debug('Logged in response :', response);
+
+      if (response.result === 'success') {
+
+      } else {
+        this.alertCtrl.alert({
+          type: 'warning',
+          title: 'YuriNET',
+          message: `${response.result} : Username or Password is incorrect.`
+        });
+      }
     });
   }
 

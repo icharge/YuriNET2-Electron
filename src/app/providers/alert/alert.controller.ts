@@ -1,20 +1,24 @@
 import { Injectable } from '@angular/core';
+import * as Electron from 'electron';
 import { ElectronService } from '../electron.service';
 
 @Injectable()
 export class AlertController {
 
+  private dialog: Electron.Dialog;
+
   constructor(
     private electron: ElectronService,
-  ) { }
+  ) {
+    this.dialog = electron.remote.dialog;
+  }
 
-  public confirm(title: string, message: string) {
-    return this.electron.remote.dialog.showMessageBox(this.electron.remote.getCurrentWindow(), {
-      type: 'warning',
-      title,
-      message,
-      buttons: ['OK'],
-    });
+  public alert(messageOptions: Electron.MessageBoxOptions) {
+    return this.dialog.showMessageBox(this.getCurrentWindow(), messageOptions);
+  }
+
+  private getCurrentWindow(): Electron.BrowserWindow {
+    return this.electron.remote.getCurrentWindow();
   }
 
 }

@@ -1,7 +1,13 @@
-.login {
+:host {
     height: 100%;
-}
+    align-content: center;
 
-.login .column {
-    max-width: 450px;
+    .login {
+        height: 100%;
+    }
+
+    .login .column {
+        max-width: 450px;
+    }
+
 }

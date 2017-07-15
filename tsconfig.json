@@ -26,5 +26,12 @@
       "es2016",
       "dom"
     ]
-  }
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/thumbs.db"
+  ]
 }

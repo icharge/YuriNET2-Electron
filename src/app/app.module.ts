@@ -1,7 +1,7 @@
 import 'zone.js';
 import 'reflect-metadata';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { SuiModule } from 'ng2-semantic-ui';
@@ -17,6 +17,7 @@ import { AppState } from './app.state';
 import { AlertController } from './providers/alert/alert.controller';
 import { HttpService } from './providers/http-service/http.service';
 import { AuthSerivce } from './providers/auth-service/auth.service';
+import { UIModule } from './ui/ui.module';
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import { AuthSerivce } from './providers/auth-service/auth.service';
     SuiModule,
     LocalizationModule.forRoot(),
     TranslationModule.forRoot(),
+    UIModule,
   ],
   declarations: [
     AppComponent,
@@ -40,7 +42,8 @@ import { AuthSerivce } from './providers/auth-service/auth.service';
     HttpService,
     AuthSerivce,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [NO_ERRORS_SCHEMA],
 })
 export class AppModule {
 

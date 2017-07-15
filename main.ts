@@ -4,7 +4,7 @@ import * as path from 'path';
 
 let win, serve;
 const args = process.argv.slice(1);
-serve = args.some(val => val === "--serve");
+serve = args.some(val => val === '--serve');
 
 if (serve) {
   // let electronPath: string = path.join(__dirname, '../node_modules', '.bin', 'electron.cmd');
@@ -17,15 +17,16 @@ if (serve) {
 
 function createWindow() {
 
-  let electronScreen = screen;
-  let size = electronScreen.getPrimaryDisplay().workAreaSize;
+  const electronScreen = screen;
+  const primaryDisplaySize = electronScreen.getPrimaryDisplay().workAreaSize;
 
   // Create the browser window.
   win = new BrowserWindow({
     x: 0,
     y: 0,
-    width: size.width,
-    height: size.height
+    width: primaryDisplaySize.width / 2,
+    height: primaryDisplaySize.height / 2,
+    frame: false,
   });
 
   // and load the index.html of the app.

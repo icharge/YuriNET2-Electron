@@ -38,7 +38,7 @@ export class HttpService {
   constructor(
     //public config: ConfigService,
     public http: Http,
-    public jsonp: Jsonp,
+    // public jsonp: Jsonp,
   ) {
 
   }
@@ -207,22 +207,23 @@ export class HttpService {
 
   /**
    * Make a JSONP request (rarely use)
-   *
+   * @deprecated
    * @param url URL
    * @param params (Optional) Search parameters
    * @param contentType Content type @see RequestContentType
    */
   public httpJSONP<T>(url: string, params?: { [key: string]: any }, contentType?: RequestContentType): Observable<T> {
-    const search = new URLSearchParams()
-    if (params != null) {
-      for (const key in params) {
-        if (params.hasOwnProperty(key)) {
-          const value = params[key];
-          search.set(key, value);
-        }
-      }
-    }
-    return this.jsonp.get(url + '?cbMethod=JSONP_CALLBACK', { search }).map((request) => request.json());
+    // const search = new URLSearchParams()
+    // if (params != null) {
+    //   for (const key in params) {
+    //     if (params.hasOwnProperty(key)) {
+    //       const value = params[key];
+    //       search.set(key, value);
+    //     }
+    //   }
+    // }
+    // return this.jsonp.get(url + '?cbMethod=JSONP_CALLBACK', { search }).map((request) => request.json());
+    return Observable.throw(new Error('JSONP is deprecated here.'));
   }
 
   /**

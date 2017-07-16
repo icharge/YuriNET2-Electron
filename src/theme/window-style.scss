@@ -5,16 +5,30 @@
   -webkit-user-select: none;
 }
 
+.no-selection {
+  -webkit-user-select: none;
+}
+
 // Window
 app-root {
   height: 100%;
   display: block;
 }
 
-window {
+window-frame {
   height: 100%;
   flex: 1;
   display: flex;
   flex-direction: column;
+
+  &.frame {
+    .row.top {
+      display: flex;
+
+      img.center {
+        width: 100%;
+      }
+    }
+  }
 }
 

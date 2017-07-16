@@ -23,8 +23,12 @@ export class ElectronService {
     }
   }
 
-  isElectron = () => {
+  public isElectron(): string {
     return window && window.process && window.process.type;
+  }
+
+  public exitApplication(): void {
+    this.remote.app.exit();
   }
 
 }

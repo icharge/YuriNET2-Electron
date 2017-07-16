@@ -26,7 +26,11 @@ function createWindow() {
     y: 0,
     width: primaryDisplaySize.width / 2,
     height: primaryDisplaySize.height / 2,
+    minWidth: 800,
+    minHeight: 600,
     frame: false,
+    // center: true,
+    backgroundColor: '#000'
   });
 
   // and load the index.html of the app.

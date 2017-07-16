@@ -28,7 +28,7 @@
           </div>
         </div>
         <div class="ui two buttons">
-          <button type="button" class="ui fluid large button" onclick="exitApplication()">{{ 'EXIT' | translate }}</button>
+          <button type="button" *ngIf="electron.isElectron()" class="ui fluid large button" (click)="exitApplication()">{{ 'EXIT' | translate }}</button>
           <button type="submit" class="ui fluid large violet submit button" [ngClass]="loading ? 'loading' : ''" [disabled]="loading || loginForm.invalid">{{ 'LOGIN' | translate}}</button>
         </div>
 

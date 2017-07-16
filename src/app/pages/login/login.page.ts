@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ElectronService } from 'app/providers/electron.service';
 import { AlertController } from '../../providers/alert/alert.controller';
 import { AuthSerivce } from '../../providers/auth-service/auth.service';
 
@@ -15,6 +16,7 @@ export class LoginPage {
   isSubmitted: boolean;
 
   constructor(
+    private electron: ElectronService,
     private alertCtrl: AlertController,
     private auth: AuthSerivce,
   ) {
@@ -40,6 +42,10 @@ export class LoginPage {
         });
       }
     });
+  }
+
+  exitApplication() {
+    this.electron.exitApplication();
   }
 
 }

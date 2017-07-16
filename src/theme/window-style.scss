@@ -21,14 +21,42 @@ window-frame {
   display: flex;
   flex-direction: column;
 
-  &.frame {
-    .row.top {
-      display: flex;
+  .row {
+    display: flex;
 
-      img.center {
-        width: 100%;
-      }
+    &.top img.center {
+      width: 100%;
     }
+
+    &.middle {
+      height: 100%;
+      display: flex;
+      flex-direction: row;
+
+      .left, .center, .right {
+        height: 100%;
+      }
+      .left, .right {
+        width: 7px;
+      }
+      .center, .content {
+        width: 100%;
+        height: 100%;
+      }
+
+    }
+
+
   }
+
+  header {
+    position: absolute;
+    top: 4px;
+    left: 0;
+    right: 0;
+  }
+
+
+
 }
 

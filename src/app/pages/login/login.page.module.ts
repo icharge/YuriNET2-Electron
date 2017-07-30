@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { TranslationModule } from 'angular-l10n';
 import { LoginPage } from './login.page';
 import { LOGIN_ROUTE } from './route';
+import { UIModule } from '../../ui/ui.module';
 
 @NgModule({
   imports: [
@@ -12,6 +13,7 @@ import { LOGIN_ROUTE } from './route';
     FormsModule,
     RouterModule.forChild(LOGIN_ROUTE),
     TranslationModule,
+    UIModule,
   ],
   declarations: [
     LoginPage,

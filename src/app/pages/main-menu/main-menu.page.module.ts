@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { TranslationModule } from 'angular-l10n';
 import { MAIN_MENU_ROUTE } from './route';
 import { MainMenuPage } from './main-menu.page';
+import { UIModule } from '../../ui/ui.module';
 
 @NgModule({
   imports: [
@@ -12,6 +13,7 @@ import { MainMenuPage } from './main-menu.page';
     FormsModule,
     RouterModule.forChild(MAIN_MENU_ROUTE),
     TranslationModule,
+    UIModule,
   ],
   declarations: [
     MainMenuPage,

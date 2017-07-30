@@ -4,11 +4,13 @@ import { SuiModule } from 'ng2-semantic-ui';
 import { TranslationModule } from 'angular-l10n';
 import { WindowComponent } from './window/window.component';
 import { TitleBarComponent } from './title-bar/title-bar.component';
+import { NavBarComponent } from './navbar/navbar.component';
 
 
 const DECLARATIONS = [
   WindowComponent,
   TitleBarComponent,
+  NavBarComponent,
 ];
 
 /**

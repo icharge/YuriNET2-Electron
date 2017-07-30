@@ -26,7 +26,7 @@ function createWindow() {
     y: 0,
     width: primaryDisplaySize.width / 2,
     height: primaryDisplaySize.height / 2,
-    minWidth: 800,
+    minWidth: 700,
     minHeight: 600,
     frame: false,
     // center: true,

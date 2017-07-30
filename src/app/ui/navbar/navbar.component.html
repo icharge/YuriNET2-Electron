@@ -1,10 +1,10 @@
 <div class="ui fixed menu violet">
-  <div class="ui container">
+  <div class="ui container window-draggable-zone">
     <div class="header item" style="width: 95px" data-ui-sref="main"></div>
-    <div class="ui dropdown bold item" tabindex="0" ng-class="{selected: $state.includes('main.play')}">
+    <div class="ui dropdown bold item" tabindex="0" suiDropdown>
       {{ 'MENU_PLAY' | translate }}
-      <!--<i class="dropdown icon"></i>-->
-      <div class="menu transition" tabindex="-1">
+      <i class="dropdown icon"></i>
+      <div class="menu" suiDropdownMenu>
         <div class="item" data-ui-sref="main.play.online" data-ui-sref-active="active" data-translate="MENU_PLAY_ONLINE">Online</div>
         <div class="item" data-ui-sref="main.play.local" data-ui-sref-active="active" data-translate="MENU_PLAY_OFFLINE">Offline with bots</div>
         <div class="divider"></div>

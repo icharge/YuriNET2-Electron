@@ -5,6 +5,10 @@
   -webkit-user-select: none;
 }
 
+.window-no-draggable-zone {
+  -webkit-app-region: no-drag;
+}
+
 .no-selection {
   -webkit-user-select: none;
 }

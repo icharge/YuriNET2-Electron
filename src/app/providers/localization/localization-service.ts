@@ -8,8 +8,7 @@ import { LocaleService, TranslationService } from 'angular-l10n';
 @Injectable()
 export class LocalizationService {
   private suppertLanguage = ['en', 'th'];
-  constructor(public locale: LocaleService, public translation: TranslationService)
-  { }
+  constructor(public locale: LocaleService, public translation: TranslationService) { }
 
   load(): Promise<any> {
     this.locale.addConfiguration()
@@ -20,7 +19,7 @@ export class LocalizationService {
 
     this.translation.addConfiguration().addProvider('./assets/locale/');
 
-    let promise: Promise<any> = new Promise((resolve: any) => {
+    const promise: Promise<any> = new Promise((resolve: any) => {
       this.translation.translationChanged.subscribe(() => {
         resolve(true);
       }, error => {

@@ -1,7 +1,7 @@
 import 'zone.js';
 import 'reflect-metadata';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, APP_INITIALIZER } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { SuiModule } from 'ng2-semantic-ui';
@@ -18,6 +18,8 @@ import { AlertController } from './providers/alert/alert.controller';
 import { HttpService } from './providers/http-service/http.service';
 import { AuthSerivce } from './providers/auth-service/auth.service';
 import { UIModule } from './ui/ui.module';
+import { LocalizationService } from './providers/localization/localization-service';
+import { initLocalization } from './providers/localization/index';
 
 @NgModule({
   imports: [
@@ -37,6 +39,13 @@ import { UIModule } from './ui/ui.module';
   providers: [
     AppState,
     ElectronService,
+    LocalizationService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initLocalization,
+      deps: [LocalizationService],
+      multi: true
+    },
     AlertController,
     HttpService,
     AuthSerivce,

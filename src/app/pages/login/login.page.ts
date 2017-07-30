@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ElectronService } from 'app/providers/electron.service';
 import { AlertController } from '../../providers/alert/alert.controller';
 import { AuthSerivce } from '../../providers/auth-service/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'login-page',
@@ -19,6 +20,7 @@ export class LoginPage {
     private electron: ElectronService,
     private alertCtrl: AlertController,
     private auth: AuthSerivce,
+    private router: Router,
   ) {
     this.isSubmitted = false;
   }
@@ -33,7 +35,7 @@ export class LoginPage {
       console.debug('Logged in response :', response);
 
       if (response.result === 'success') {
-
+        this.router.navigate(['/main']);
       } else {
         this.alertCtrl.alert({
           type: 'warning',

@@ -4,8 +4,7 @@
   "description": "YuriNET 2 with Electron platform",
   "homepage": "http://www.thaira2.com",
   "author": {
-    "name": "Norrapat Nimmanee",
-    "email": "charge_n@hotmail.com"
+    "name": "Norrapat Nimmanee"
   },
   "keywords": [
     "angular",

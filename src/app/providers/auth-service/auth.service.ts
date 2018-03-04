@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AppConstant } from '../../app.constant';
 import { IAuthResponse } from '../../models/auth/auth-response.interface';
 import { User } from '../../models/auth/user.model';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class AuthSerivce {
@@ -15,11 +16,16 @@ export class AuthSerivce {
   ) { }
 
   public login(username: string, password: string): Observable<IAuthResponse> {
-    return this.http.post<IAuthResponse>(AppConstant.LOGIN_URL, {
-      u: username,
-      p: password,
-      hds: '', // TODO: HDD Serial
-    }).map((response) => {
+
+    const body = new HttpParams();
+    body.set('u', username);
+    body.set('p', password);
+    body.set('hds', '');
+
+    return this.http.post<IAuthResponse>(AppConstant.LOGIN_URL, body.toString(), {
+      headers: new HttpHeaders()
+        .set('Content-Type', 'application/x-www-form-urlencoded')
+    }).pipe(map((response) => {
 
       this.userData = {
         cdkey: response.cdkey,
@@ -39,7 +45,7 @@ export class AuthSerivce {
       };
 
       return response;
-    });
+    }));
   }
 
   public logout() {

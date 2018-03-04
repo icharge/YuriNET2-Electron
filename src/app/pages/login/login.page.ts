@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ElectronService } from 'app/providers/electron.service';
+import { ElectronService } from '../../providers/electron.service';
 import { AlertController } from '../../providers/alert/alert.controller';
 import { AuthSerivce } from '../../providers/auth-service/auth.service';
 import { Router } from '@angular/router';

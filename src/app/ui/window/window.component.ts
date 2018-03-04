@@ -5,6 +5,7 @@ import { Component, HostBinding } from '@angular/core';
 @Component({
   selector: 'window-frame',
   templateUrl: './window.component.html',
+  // templateUrl: './window-classic.component.html',
   moduleId: module.id,
 })
 export class WindowComponent {

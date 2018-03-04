@@ -1,5 +1,6 @@
-import 'zone.js';
+import 'zone.js/dist/zone-mix';
 import 'reflect-metadata';
+import '../polyfills';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, APP_INITIALIZER } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -17,8 +18,6 @@ import { AppState } from './app.state';
 import { AlertController } from './providers/alert/alert.controller';
 import { AuthSerivce } from './providers/auth-service/auth.service';
 import { UIModule } from './ui/ui.module';
-import { LocalizationService } from './providers/localization/localization-service';
-import { initLocalization } from './providers/localization/index';
 
 const l10nConfig: L10nConfig = {
   locale: {
@@ -57,13 +56,6 @@ const l10nConfig: L10nConfig = {
   providers: [
     AppState,
     ElectronService,
-    LocalizationService,
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initLocalization,
-      deps: [LocalizationService],
-      multi: true
-    },
     AlertController,
     AuthSerivce,
   ],

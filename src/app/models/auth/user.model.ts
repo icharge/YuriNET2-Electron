@@ -1,7 +1,7 @@
 /**
  * User model
  */
-export class UserModel {
+export interface User {
 
   /**
    * Game CDKey

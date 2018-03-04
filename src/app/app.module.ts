@@ -3,9 +3,9 @@ import 'reflect-metadata';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, APP_INITIALIZER } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { SuiModule } from 'ng2-semantic-ui';
-import { LocalizationModule, LocaleService, TranslationService, TranslationModule } from 'angular-l10n';
+import { TranslationModule, L10nConfig, StorageStrategy, ProviderType, L10nLoader } from 'angular-l10n';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -15,21 +15,39 @@ import { AppRoutingModule } from './app-routing.module';
 import { ElectronService } from './providers/electron.service';
 import { AppState } from './app.state';
 import { AlertController } from './providers/alert/alert.controller';
-import { HttpService } from './providers/http-service/http.service';
 import { AuthSerivce } from './providers/auth-service/auth.service';
 import { UIModule } from './ui/ui.module';
 import { LocalizationService } from './providers/localization/localization-service';
 import { initLocalization } from './providers/localization/index';
 
+const l10nConfig: L10nConfig = {
+  locale: {
+    languages: [
+      { code: 'en', dir: 'ltr' },
+      { code: 'th', dir: 'ltr' }
+    ],
+    language: 'en',
+    storage: StorageStrategy.Cookie
+  },
+  translation: {
+    providers: [
+      { type: ProviderType.Static, prefix: './assets/locale/' }
+    ],
+    caching: true,
+    missingValue: 'No key'
+  }
+};
+
+
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
+    HttpClientModule,
     AppRoutingModule,
     SuiModule,
-    LocalizationModule.forRoot(),
-    TranslationModule.forRoot(),
+    // LocalizationModule,
+    TranslationModule.forRoot(l10nConfig),
     UIModule,
   ],
   declarations: [
@@ -47,7 +65,6 @@ import { initLocalization } from './providers/localization/index';
       multi: true
     },
     AlertController,
-    HttpService,
     AuthSerivce,
   ],
   bootstrap: [AppComponent],
@@ -55,17 +72,8 @@ import { initLocalization } from './providers/localization/index';
 })
 export class AppModule {
 
-  constructor(public locale: LocaleService, public translation: TranslationService) {
-    this.locale.addConfiguration()
-      .addLanguages(['en', 'th'])
-      .setCookieExpiration(30)
-      .defineDefaultLocale('en', 'US')
-      .defineCurrency('BTH');
-
-    this.translation.addConfiguration()
-      .addProvider('./assets/locale/');
-
-    this.translation.init();
+  constructor(public l10nLoader: L10nLoader) {
+    this.l10nLoader.load();
   }
 
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ElectronService } from '../../providers/electron.service';
 
 @Component({
   selector: 'navbar',
@@ -6,5 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavBarComponent {
+
+  constructor(
+    private electron: ElectronService,
+  ) {
+
+  }
+
+  logout() {
+    // TODO: real logout
+    this.electron.exitApplication();
+  }
 
 }

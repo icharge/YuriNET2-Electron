@@ -15,14 +15,16 @@ export class LoginPage {
   formData: any = {};
 
   isSubmitted: boolean;
+  loading: boolean;
 
   constructor(
-    private electron: ElectronService,
+    public electron: ElectronService,
     private alertCtrl: AlertController,
     private auth: AuthSerivce,
     private router: Router,
   ) {
     this.isSubmitted = false;
+    this.loading = false;
   }
 
   submitLogin(e: Event, form: NgForm) {
@@ -30,8 +32,10 @@ export class LoginPage {
     console.debug('Submit form :', form);
 
     this.isSubmitted = true;
+    this.loading = true;
 
     this.auth.login(this.formData.username, this.formData.password).subscribe((response) => {
+      this.loading = false;
       console.debug('Logged in response :', response);
 
       if (response.result === 'success') {

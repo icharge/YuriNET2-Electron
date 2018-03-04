@@ -7,14 +7,14 @@
     </h2>
     <form #loginForm="ngForm" class="ui large form" (ngSubmit)="submitLogin($event, loginForm)">
       <div class="ui stacked segment">
-        <div class="field" [ngClass]="{'error' : username.invalid && submitted}">
+        <div class="field" [ngClass]="{'error' : username.invalid && isSubmitted}">
           <div class="ui left icon input">
             <i class="user icon"></i>
             <input type="text" name="username" #username="ngModel" placeholder="{{ 'USERNAME' | translate }}" [(ngModel)]="formData.username"
               required/>
           </div>
         </div>
-        <div class="field" [ngClass]="{'error' : password.invalid && submitted}">
+        <div class="field" [ngClass]="{'error' : password.invalid && isSubmitted}">
           <div class="ui left icon input">
             <i class="lock icon"></i>
             <input type="password" name="password" #password="ngModel" placeholder="{{ 'PASSWORD' | translate }}" [(ngModel)]="formData.password"

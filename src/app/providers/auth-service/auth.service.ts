@@ -17,12 +17,9 @@ export class AuthSerivce {
 
   public login(username: string, password: string): Observable<IAuthResponse> {
 
-    const body = new HttpParams();
-    body.set('u', username);
-    body.set('p', password);
-    body.set('hds', '');
+    const body = `u=${username}&p=${password}&hds=${''}`;
 
-    return this.http.post<IAuthResponse>(AppConstant.LOGIN_URL, body.toString(), {
+    return this.http.post<IAuthResponse>(AppConstant.LOGIN_URL, body, {
       headers: new HttpHeaders()
         .set('Content-Type', 'application/x-www-form-urlencoded')
     }).pipe(map((response) => {

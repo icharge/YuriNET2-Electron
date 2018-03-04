@@ -1,11 +1,11 @@
 {
-  "name": "angular-electron",
-  "version": "3.0.0",
-  "description": "Angular 5 with Electron (Typescript + SASS + Hot Reload)",
-  "homepage": "https://github.com/maximegris/angular-electron",
+  "name": "yurinet2-electron",
+  "version": "1.0.0",
+  "description": "YuriNET 2 with Electron platform",
+  "homepage": "http://www.thaira2.com",
   "author": {
-    "name": "Maxime GRIS",
-    "email": "maxime.gris@gmail.com"
+    "name": "Norrapat Nimmanee",
+    "email": "charge_n@hotmail.com"
   },
   "keywords": [
     "angular",

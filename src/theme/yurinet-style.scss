@@ -69,7 +69,9 @@ a:hover {
     }
 }
 
-
+.main-router + * {
+    margin-top: 40px;
+}
 
 .ui.violet.button, .ui.violet.buttons .button {
     background-color: #712C99;

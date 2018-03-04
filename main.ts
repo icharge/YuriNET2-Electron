@@ -27,7 +27,8 @@ function createWindow() {
     minHeight: 600,
     frame: false,
     // center: true,
-    backgroundColor: '#000'
+    backgroundColor: '#000',
+    webPreferences: { webSecurity: false }, // Temporary disable security.
   });
 
   if (serve) {

@@ -1,31 +1,28 @@
 import { app, BrowserWindow, screen } from 'electron';
 import * as path from 'path';
-
+import * as url from 'url';
 
 let win, serve;
 const args = process.argv.slice(1);
 serve = args.some(val => val === '--serve');
 
-if (serve) {
-  // let electronPath: string = path.join(__dirname, '../node_modules', '.bin', 'electron.cmd');
-  require('electron-reload')(__dirname, {
-    // electron: electronPath,
-    // hardResetMethod: 'exit',
-  });
-  // console.log(electronPath);
+try {
+  require('dotenv').config();
+} catch {
+  console.log('asar');
 }
 
 function createWindow() {
 
   const electronScreen = screen;
-  const primaryDisplaySize = electronScreen.getPrimaryDisplay().workAreaSize;
+  const size = electronScreen.getPrimaryDisplay().workAreaSize;
 
   // Create the browser window.
   win = new BrowserWindow({
     x: 0,
     y: 0,
-    width: primaryDisplaySize.width / 2,
-    height: primaryDisplaySize.height / 2,
+    width: size.width / 2,
+    height: size.height / 2,
     minWidth: 700,
     minHeight: 600,
     frame: false,
@@ -33,13 +30,19 @@ function createWindow() {
     backgroundColor: '#000'
   });
 
-  // and load the index.html of the app.
-  win.loadURL('file://' + __dirname + '/index.html');
-
-  // Open the DevTools.
   if (serve) {
-    win.webContents.openDevTools();
+    require('electron-reload')(__dirname, {
+    });
+    win.loadURL('http://localhost:4200');
+  } else {
+    win.loadURL(url.format({
+      pathname: path.join(__dirname, 'dist/index.html'),
+      protocol: 'file:',
+      slashes: true
+    }));
   }
+
+  win.webContents.openDevTools();
 
   // Emitted when the window is closed.
   win.on('closed', () => {
@@ -76,5 +79,5 @@ try {
 
 } catch (e) {
   // Catch Error
-  //throw e;
+  // throw e;
 }

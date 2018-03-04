@@ -1,6 +1,4 @@
 /* SystemJS module definition */
-// declare module '*';
-
 declare var nodeModule: NodeModule;
 interface NodeModule {
   id: string;
@@ -8,6 +6,6 @@ interface NodeModule {
 
 declare var window: Window;
 interface Window {
-  process: NodeJS.Process;
-  require: NodeRequire;
+  process: any;
+  require: any;
 }

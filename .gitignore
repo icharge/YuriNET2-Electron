@@ -5,6 +5,7 @@
 /tmp
 /out-tsc
 /app-builds
+main.js
 
 # dependencies
 /node_modules
@@ -33,6 +34,7 @@
 npm-debug.log
 testem.log
 /typings
+package-lock.json
 
 # e2e
 /e2e/*.js
@@ -41,4 +43,3 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-npm-debug.log.3561952118

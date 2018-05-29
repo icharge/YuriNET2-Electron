@@ -55,9 +55,6 @@ const l10nConfig: L10nConfig = {
   ],
   providers: [
     AppState,
-    ElectronService,
-    AlertController,
-    AuthSerivce,
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

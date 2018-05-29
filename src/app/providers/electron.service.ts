@@ -5,7 +5,9 @@ import { Injectable } from '@angular/core';
 import * as Electron from 'electron';
 import * as childProcess from 'child_process';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class ElectronService {
 
   electron: typeof Electron;

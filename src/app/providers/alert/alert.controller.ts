@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import * as Electron from 'electron';
 import { ElectronService } from '../electron.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class AlertController {
 
   private dialog: Electron.Dialog;

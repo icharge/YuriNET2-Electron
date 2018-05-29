@@ -6,7 +6,9 @@ import { IAuthResponse } from '../../models/auth/auth-response.interface';
 import { User } from '../../models/auth/user.model';
 import { map } from 'rxjs/operators';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class AuthSerivce {
 
   private userData: User;

@@ -1,4 +1,4 @@
-import { trigger, keyframes, animate, transition, style } from '@angular/core';
+import { trigger, keyframes, animate, transition, style } from '@angular/animations';
 
 /***
  * Animate.css Ported into Angular

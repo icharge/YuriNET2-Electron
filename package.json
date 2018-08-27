@@ -59,6 +59,7 @@
     "electron": "2.0.2",
     "electron-builder": "20.14.7",
     "electron-reload": "1.2.2",
+    "electron-squirrel-startup": "^1.0.0",
     "electron-winstaller": "^2.6.4",
     "jasmine-core": "3.1.0",
     "jasmine-spec-reporter": "4.2.1",
@@ -79,5 +80,9 @@
     "wait-on": "2.1.0",
     "webdriver-manager": "12.0.6",
     "zone.js": "0.8.26"
+  },
+  "build": {
+    "appId": "com.thaira2.yurinet2",
+    "productName": "YuriNET 2"
   }
 }

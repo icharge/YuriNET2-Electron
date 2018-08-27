@@ -2,6 +2,13 @@ import { app, BrowserWindow, screen, protocol, dialog } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 
+import {handleSquirrelEvent} from './squirrel';
+
+// Handle Squirrel
+if (handleSquirrelEvent(app)) {
+  process.exit();
+}
+
 let win, serve;
 const args = process.argv.slice(1);
 serve = args.some(val => val === '--serve');
